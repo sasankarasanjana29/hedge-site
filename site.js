@@ -25,3 +25,15 @@ if (!still && 'IntersectionObserver' in window) {
   }, { rootMargin: '0px 0px -8% 0px' });
   items.forEach((el) => { el.classList.add('rise'); seen.observe(el); });
 }
+
+// The app clips play only while on screen (and never with Reduce Motion, which keeps the poster).
+const clips = document.querySelectorAll('video.clip');
+if (!still && 'IntersectionObserver' in window) {
+  const watch = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) e.target.play().catch(() => {});
+      else e.target.pause();
+    }
+  }, { threshold: 0.35 });
+  clips.forEach((v) => watch.observe(v));
+}

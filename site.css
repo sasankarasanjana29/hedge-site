@@ -241,7 +241,6 @@ details p { color: var(--soft); margin-top: 10px; }
   .explain { gap: 90px; margin-top: 100px; }
   .smalls, .faq, .end, .bento-wrap { margin-top: 100px; }
   .small-grid { grid-template-columns: 1fr; }
-  .btn { width: 100%; }
 }
 
 /* The island card's two states: compact above, expanded below */
@@ -303,4 +302,41 @@ details p { color: var(--soft); margin-top: 10px; }
   .island.compact.on-phone { top: 15px; height: 28px; }
   .island.compact.on-phone b { font-size: 12px; }
   .c3 { width: 42px; height: 42px; }
+}
+
+/* ---------- Bento, take two: built round the clips ----------
+   Three columns; a tall card spans two rows, a wide one two columns, so the grid places itself:
+   log (tall) | safe number (wide) / never red | island / pots (wide) | Hedge (tall) / privacy (wide). */
+.bento { grid-template-columns: repeat(3, 1fr); grid-auto-flow: row dense; gap: 18px; }
+.bento .card { min-height: 340px; padding: 32px; }
+.bento .tall { grid-row: span 2; }
+.bento .wide { grid-column: span 2; }
+.bento h3 { font-size: 27px; }
+.lav-deep { background: linear-gradient(165deg, #7A5AF8, #5B3FD6); color: #fff; }
+.lav-deep .card-copy p { color: #E4DCFF; }
+.clip-phone { width: 250px; margin: auto auto -96px; padding: 8px; border-radius: 44px; box-shadow: 0 40px 70px -30px rgba(20, 10, 60, .55); }
+.lav-deep .clip-phone { background: #0E0E10; box-shadow: 0 40px 70px -24px rgba(20, 10, 60, .7), 0 0 0 1px rgba(255, 255, 255, .12); }
+video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto; border-radius: 37px; background: #fff; object-fit: cover; }
+.ex .phone video.clip { border-radius: 44px; }
+.rings-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: #fff; border-radius: 22px; padding: 22px 14px; }
+.rings-row .pr .ring { width: 70px; height: 70px; }
+
+/* ---------- Responsive: tablets and phones ---------- */
+@media (max-width: 1080px) {
+  .bento { grid-template-columns: repeat(2, 1fr); }
+  .bento .wide { grid-column: span 2; }
+  .hero-copy { max-width: 640px; }
+}
+@media (max-width: 760px) {
+  .btn { width: auto; }
+  .bento { grid-template-columns: 1fr; }
+  .bento .tall { grid-row: auto; }
+  .bento .wide { grid-column: auto; }
+  .bento .card { min-height: 0; padding: 26px; }
+  .bento .tall { padding-bottom: 0; }
+  .clip-phone { width: 230px; margin: 8px auto -70px; }
+  .rings-row { grid-template-columns: repeat(2, 1fr); row-gap: 18px; }
+}
+@media (max-width: 480px) {
+  .ctas .btn, .end .btn { width: 100%; }
 }
