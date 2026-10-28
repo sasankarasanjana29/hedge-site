@@ -6,6 +6,14 @@
 <title>Pouch: know what's safe to spend today</title>
 <meta name="description" content="Pouch turns your pay into one number for today, keeps every part of the month in its own pot, and lets Hedge the hedgehog cheer you on. No bank login. Coming to iPhone.">
 <meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pouch: know what's safe to spend today">
+<meta property="og:description" content="One number for today, a pot for every part of the month, and Hedge the hedgehog cheering you on. No bank login. Coming to iPhone.">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="site.css">
@@ -64,7 +72,7 @@
       <div class="float island-card">
         <div class="isl-top"><img src="assets/hedge-thumbsUp.png" alt=""><span>Safe today</span></div>
         <strong>Rs 1,677</strong>
-        <div class="isl-row"><span>Last: Coffee</span><i><svg><use href="#i-plus"/></svg>Log</i></div>
+        <div class="isl-row"><span>Last: Coffee, Rs 450</span><i><svg><use href="#i-plus"/></svg>Log</i></div>
       </div>
       <div class="float react-card"><img src="assets/hedge-thumbsUp.png" alt=""><div><b>Rs 450</b><span>Fits easily.</span></div></div>
       <div class="float ring-card">
@@ -101,15 +109,22 @@
 
       <article class="card span2 rose">
         <div class="card-copy"><h3>Never red</h3><p>Go past a plan and the pot just says "extra", in grey, in its own colour.</p></div>
-        <div class="art pot-row">
-          <span class="dot" style="background:#9D7BFF"><svg><use href="#i-balloon"/></svg></span>
-          <div class="pot-mid"><div class="pot-top"><b>Fun</b><span><em>Rs 1,600</em> extra</span></div><i><u style="width:100%;background:#9D7BFF"></u></i><small>Rs 7,600 of Rs 6,000 spent</small></div>
+        <div class="art pot-rows">
+          <div class="pot-row">
+            <span class="dot" style="background:#FF8A3D"><svg><use href="#i-cart"/></svg></span>
+            <div class="pot-mid"><div class="pot-top"><b>Groceries</b><span><em>Rs 2,630</em> left</span></div><i><u style="width:89%;background:#FF8A3D"></u></i></div>
+          </div>
+          <div class="pot-row">
+            <span class="dot" style="background:#9D7BFF"><svg><use href="#i-balloon"/></svg></span>
+            <div class="pot-mid"><div class="pot-top"><b>Fun</b><span><em>Rs 1,600</em> extra</span></div><i><u style="width:100%;background:#9D7BFF"></u></i></div>
+          </div>
         </div>
       </article>
 
       <article class="card span2 sky">
         <div class="card-copy"><h3>In your Dynamic Island</h3><p>Today's number on the Lock Screen too, updated after every spend.</p></div>
-        <div class="art">
+        <div class="art isl-stack">
+          <div class="island compact"><span class="cring"></span><span class="cam"></span><b>1.2k</b></div>
           <div class="island mini">
             <div class="isl-top"><img src="assets/hedge-thumbsUp.png" alt=""><span>Safe today</span></div>
             <strong>Rs 1,227</strong>
