@@ -253,8 +253,8 @@ details p { color: var(--soft); margin-top: 10px; }
 
 /* ---------- Hover: cards lift a touch (pointer devices only) ---------- */
 @media (hover: hover) {
-  .card, .small-grid > div { transition: transform .25s cubic-bezier(.23, 1, .32, 1), box-shadow .25s cubic-bezier(.23, 1, .32, 1); }
-  .card:hover, .small-grid > div:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px rgba(29, 36, 51, .35); }
+  .card, .small-grid > div { transition: transform .25s cubic-bezier(.23, 1, .32, 1); }
+  .card:hover, .small-grid > div:hover { transform: translateY(-3px); }
 }
 
 /* ---------- Entrance: things rise once as they scroll in (set up by site.js) ---------- */
@@ -339,4 +339,61 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 }
 @media (max-width: 480px) {
   .ctas .btn, .end .btn { width: 100%; }
+}
+
+/* ---------- Bento, take three: shorter. Three fixed rows on wide screens ----------
+   log (tall) | safe number (wide, side by side)
+   log        | never red | island
+   pots       | Hedge (phone peeking up) | privacy */
+@media (min-width: 1081px) {
+  .bento { grid-auto-rows: 292px; }
+  .bento .card { min-height: 0; height: 100%; padding: 26px 28px; gap: 16px; }
+  .bento .wide { flex-direction: row; align-items: center; gap: 32px; }
+  .bento .wide .card-copy { flex: 0 0 38%; }
+  .bento .wide .art { flex: 1; margin-top: 0; }
+  .bento .tall .clip-phone { width: 236px; margin-bottom: -150px; }
+}
+.bento h3 { font-size: 24px; }
+.bento .card-copy p { font-size: 16px; margin-top: 6px; }
+.safe-art { padding: 18px 20px; }
+.safe-num strong { font-size: 52px; }
+.safe-art img { width: 88px; height: 88px; }
+.pot-row { padding: 11px 0; }
+.isl-stack { gap: 10px; }
+.island.mini { padding: 12px 16px 14px; }
+.island.mini strong { font-size: 27px; }
+.rings-row { grid-template-columns: repeat(4, 1fr); padding: 16px 8px; gap: 4px; }
+.rings-row .pr .ring { width: 54px; height: 54px; margin-bottom: 6px; }
+.rings-row .pr b { font-size: 13px; }
+.rings-row .pr small { display: none; }
+/* The phone rises from the card's bottom edge; only Hedge and the top of the screen show */
+.peek-card { overflow: hidden; }
+.clip-phone.peek { width: 200px; margin: auto auto -260px; }
+.rows .r { min-height: 58px; }
+@media (max-width: 1080px) {
+  .clip-phone.peek { margin-bottom: -300px; }
+}
+@media (max-width: 760px) {
+  .rings-row { grid-template-columns: repeat(4, 1fr); }
+  .clip-phone.peek { width: 220px; margin-bottom: -320px; }
+  .bento .tall .clip-phone { margin-bottom: -120px; }
+}
+
+@media (min-width: 1081px) {
+  .isl-stack .island.compact { height: 34px; }
+  .island.mini { padding: 10px 16px 12px; gap: 2px; }
+  .island.mini strong { font-size: 25px; }
+  .island.mini .isl-row i { padding: 4px 11px; }
+  .pot-row { padding: 9px 0; }
+}
+
+/* Phones: keep each tile short. The clip phone peeks, the safe card drops its month bar. */
+@media (max-width: 760px) {
+  .bento { gap: 14px; }
+  .bento .tall .clip-phone { width: 210px; margin-bottom: -250px; }
+  .safe-art { grid-template-columns: 1fr auto; }
+  .safe-art .month-bar { display: none; }
+  .safe-num strong { font-size: 44px; }
+  .safe-art img { width: 76px; height: 76px; }
+  .bento .card-copy p { font-size: 15.5px; }
 }
