@@ -1,0 +1,154 @@
+/* Pouch site. The idea: the page is a small working Pouch. The hero is the app's own New entry
+   pieces (chunky keypad, segmented control, rows, the range meter, Hedge's reactions) so a
+   visitor uses the product instead of reading about it. Colours are the app's (palette.ts).
+   No web fonts, no third parties, nothing typed is sent anywhere. */
+
+:root {
+  --page: #FFFFFF;
+  --ink: #1D2433;
+  --soft: #6B7183;
+  --faint: #9AA0AE;
+  --card: #F5F6F9;
+  --line: #E3E5EA;
+  --brand: #7A5AF8;
+  --lip: #5B3FD6;
+  --tint: #F0EBFF;
+  --lime: #58CC02;
+  --leaf-tint: #D4F7DF;
+  --leaf-deep: #0F5C2C;
+  --max: 1140px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font: 17px/1.5 ui-rounded, "SF Pro Rounded", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2 { margin: 0; letter-spacing: -0.025em; line-height: 1.05; font-weight: 800; }
+h1 { font-size: clamp(40px, 5.6vw, 68px); }
+h2 { font-size: clamp(30px, 3.8vw, 44px); }
+p { margin: 0; }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 14px; }
+
+/* ---------- Top ---------- */
+.top { max-width: var(--max); margin: 0 auto; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 20px; }
+.brand img { border-radius: 10px; }
+.soon { background: var(--tint); color: var(--lip); font-weight: 800; font-size: 14px; padding: 8px 14px; border-radius: 999px; }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+
+/* ---------- The playable hero ---------- */
+.play { display: grid; grid-template-columns: 1fr 440px; gap: 64px; align-items: center; padding: 48px 0 24px; }
+.sub { color: var(--soft); font-size: 20px; margin-top: 20px; max-width: 470px; }
+.cur { display: flex; gap: 8px; margin-top: 28px; flex-wrap: wrap; }
+
+/* Chunky: a face on a lip of the same shape, as every control in the app */
+.cur button, .chips button, .keys button, .line {
+  border-radius: 16px; background: #fff;
+  box-shadow: 0 0 0 2px var(--line), 0 4px 0 var(--line);
+  transition: transform .08s ease, box-shadow .08s ease, background .15s ease;
+}
+.cur button:active, .chips button:active, .keys button:active, .line:active {
+  transform: translateY(3px); box-shadow: 0 0 0 2px var(--line), 0 1px 0 var(--line);
+}
+.cur button { min-width: 52px; height: 44px; font-weight: 800; }
+.cur button[aria-pressed="true"], .chips button[aria-pressed="true"], .line.on {
+  background: var(--tint); box-shadow: 0 0 0 2px var(--brand), 0 4px 0 var(--lip);
+}
+
+.toy { background: var(--card); border-radius: 36px; padding: 18px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 40px 80px -40px rgba(29, 36, 51, .35); }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: #E9EAF0; border-radius: 18px; padding: 4px; }
+.seg button { height: 42px; border-radius: 14px; font-weight: 700; color: var(--soft); }
+.seg button[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 2px 8px rgba(29, 36, 51, .08); }
+
+.step { display: flex; flex-direction: column; gap: 10px; min-height: 292px; }
+.step[hidden] { display: none; }
+#step-spend { justify-content: center; gap: 18px; }
+#step-spend .spend { margin-top: 0; }
+.line { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 58px; padding: 0 18px; text-align: left; }
+.line span { color: var(--soft); font-weight: 600; }
+.line b { font-size: 21px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.line.static { box-shadow: none; background: transparent; padding: 0 4px; cursor: default; }
+.line.static:active { transform: none; box-shadow: none; }
+.chips { display: flex; gap: 8px; }
+.chips button { height: 38px; padding: 0 12px; font-weight: 800; font-size: 15px; border-radius: 12px; }
+
+.answer, .spend { display: flex; align-items: center; gap: 12px; margin-top: auto; padding: 4px 4px 0; }
+.hedge { width: 110px; height: 110px; flex: none; transition: transform .25s cubic-bezier(.34, 1.56, .64, 1); }
+.hedge.hop { transform: translateY(-10px) scale(1.04); }
+.answer small { display: block; color: var(--soft); font-weight: 700; font-size: 15px; }
+.answer strong, .spend strong { display: block; font-size: clamp(40px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.answer span, .spend span { color: var(--soft); font-weight: 600; }
+
+/* The app's range meter: how today's spend sits against today's safe number */
+.meter { position: relative; height: 16px; border-radius: 99px; background: linear-gradient(90deg, #58CC02, #1CB0F6); margin: 6px 6px 0; }
+.meter i { position: absolute; inset: 0 auto 0 0; border-radius: 99px; background: rgba(255, 255, 255, .55); width: 0; transition: width .3s cubic-bezier(.23, 1, .32, 1); }
+.meter em { position: absolute; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px var(--ink); left: 0; transition: left .3s cubic-bezier(.23, 1, .32, 1); }
+.tomorrow { color: var(--soft); font-weight: 600; min-height: 3em; padding: 4px 6px 0; }
+
+/* The keypad: the app's, three by four */
+.keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.keys button { height: 58px; font-size: 26px; font-weight: 600; }
+
+/* ---------- Pouch, every day ---------- */
+.app { margin-top: 120px; }
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+.three figure { margin: 0; }
+.phone { padding: 8px; background: #0E0E10; border-radius: 46px; max-width: 290px; margin: 0 auto; box-shadow: 0 30px 60px -28px rgba(29, 36, 51, .4); }
+.phone img { width: 100%; height: auto; border-radius: 39px; }
+figcaption { margin: 22px auto 0; max-width: 290px; color: var(--soft); }
+figcaption b { color: var(--ink); display: block; font-size: 19px; margin-bottom: 2px; }
+
+/* ---------- Privacy ---------- */
+.safe { margin-top: 120px; background: var(--leaf-tint); border-radius: 36px; padding: 40px; display: flex; align-items: center; gap: 28px; }
+.safe img { width: 120px; height: 120px; flex: none; }
+.safe p { color: var(--leaf-deep); font-size: 18px; margin-top: 12px; max-width: 640px; }
+.safe a { font-weight: 800; }
+
+/* ---------- FAQ ---------- */
+.faq { margin-top: 120px; max-width: 760px; }
+.faq h2 { margin-bottom: 16px; }
+details { border-bottom: 1px solid var(--line); padding: 20px 4px; }
+summary { cursor: pointer; font-weight: 700; font-size: 19px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--brand); font-size: 26px; line-height: 1; transition: transform .2s ease; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { color: var(--soft); margin-top: 10px; }
+
+.foot { max-width: var(--max); margin: 96px auto 40px; padding: 0 16px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--soft); font-size: 15px; }
+.foot nav { display: flex; gap: 18px; }
+.foot a { text-decoration: none; font-weight: 700; }
+
+/* ---------- Privacy policy page ---------- */
+.nav { max-width: var(--max); margin: 0 auto; padding: 20px 16px; }
+.legal { max-width: 720px; padding-top: 40px; }
+.legal h1 { font-size: clamp(38px, 6vw, 56px); margin-bottom: 24px; }
+.legal h2 { font-size: 24px; letter-spacing: -0.01em; margin: 36px 0 10px; }
+.legal p { color: var(--soft); margin-top: 10px; }
+.legal a { color: var(--lip); font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hedge, .meter i, .meter em, .cur button, .chips button, .keys button, .line { transition: none; }
+}
+
+/* ---------- Phone widths: the toy comes right after the question ---------- */
+@media (max-width: 920px) {
+  .play { grid-template-columns: 1fr; gap: 28px; padding-top: 24px; }
+  .toy { max-width: 460px; width: 100%; margin: 0 auto; }
+  .three { grid-template-columns: 1fr; gap: 56px; }
+  .safe { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .app, .safe, .faq { margin-top: 88px; }
+}
+@media (max-width: 400px) {
+  .toy { padding: 14px; border-radius: 30px; }
+  .keys button { height: 52px; }
+  .hedge { width: 88px; height: 88px; }
+  .line { padding: 0 14px; }
+  .chips button { padding: 0 9px; }
+}

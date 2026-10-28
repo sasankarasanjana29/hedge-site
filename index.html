@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pouch: what's safe for you to spend today?</title>
+<meta name="description" content="Try Pouch right here: type your pay and bills, see what's safe to spend today, then try a spend and watch Hedge react. Nothing you type leaves the page.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#" aria-label="Pouch"><img src="assets/icon-180.png" alt="" width="34" height="34"><span>Pouch</span></a>
+  <span class="soon">Coming to iPhone</span>
+</header>
+
+<main>
+  <!-- The idea: the page is a small working Pouch. Your numbers, your safe-to-spend today, Hedge's reaction. -->
+  <section class="play" aria-labelledby="ask">
+    <div class="ask">
+      <h1 id="ask">What's safe for you to spend today?</h1>
+      <p class="sub">Pouch works it out every morning. Try it with your own numbers: nothing you type leaves this page.</p>
+      <div class="cur" role="group" aria-label="Currency">
+        <button type="button" data-cur="Rs">Rs</button>
+        <button type="button" data-cur="₹">₹</button>
+        <button type="button" data-cur="$">$</button>
+        <button type="button" data-cur="€">€</button>
+        <button type="button" data-cur="£">£</button>
+      </div>
+    </div>
+
+    <div class="toy" id="toy">
+      <div class="seg" role="tablist" aria-label="Step">
+        <button type="button" role="tab" id="tab-month" aria-selected="true" data-step="month">Your month</button>
+        <button type="button" role="tab" id="tab-spend" aria-selected="false" data-step="spend">Try a spend</button>
+      </div>
+
+      <!-- Step 1: the month -->
+      <div class="step" id="step-month" role="tabpanel" aria-labelledby="tab-month">
+        <button type="button" class="line on" data-field="pay"><span>Pay this month</span><b data-show="pay"></b></button>
+        <button type="button" class="line" data-field="bills"><span>Rent and bills</span><b data-show="bills"></b></button>
+        <div class="line static"><span>Save each month</span>
+          <div class="chips" role="group" aria-label="Save each month">
+            <button type="button" data-save="0">None</button>
+            <button type="button" data-save="0.2">20%</button>
+            <button type="button" data-save="0.3">30%</button>
+          </div>
+        </div>
+        <div class="answer" aria-live="polite">
+          <img class="hedge" id="hedge-month" src="assets/hedge-thumbsUp.png" alt="" width="120" height="120">
+          <div>
+            <small>Safe to spend today</small>
+            <strong id="safe">Rs 0</strong>
+            <span id="days"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: try a spend, and Hedge reacts the way he does in the app -->
+      <div class="step" id="step-spend" role="tabpanel" aria-labelledby="tab-spend" hidden>
+        <div class="spend">
+          <img class="hedge" id="hedge-spend" src="assets/hedge-wave.png" alt="" width="120" height="120">
+          <div>
+            <strong id="spend">Rs 0</strong>
+            <span id="react" aria-live="polite">How much was it?</span>
+          </div>
+        </div>
+        <div class="meter" aria-hidden="true"><i id="meter-fill"></i><em id="meter-mark"></em></div>
+        <p class="tomorrow" id="tomorrow"></p>
+      </div>
+
+      <div class="keys" role="group" aria-label="Keypad">
+        <button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button>
+        <button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button>
+        <button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button>
+        <button type="button" data-key="00">00</button><button type="button" data-key="0">0</button><button type="button" data-key="back" aria-label="Delete">⌫</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- What that number is, in the app -->
+  <section class="app" aria-labelledby="every">
+    <h2 id="every">That's Pouch, every day.</h2>
+    <div class="three">
+      <figure><div class="phone"><img src="assets/screen-today.webp" alt="Pouch's Today screen: the safe-to-spend number, with pots for rent, groceries, fun and savings" width="402" height="874" loading="lazy"></div>
+        <figcaption><b>One number each morning.</b> Spend less today and tomorrow's grows.</figcaption></figure>
+      <figure><div class="phone"><img src="assets/screen-budget.webp" alt="The Budget tab, each pot in its family's colour" width="402" height="874" loading="lazy"></div>
+        <figcaption><b>A pot for each part of the month.</b> Going past a plan says "extra" in grey. Pouch never turns red at you.</figcaption></figure>
+      <figure><div class="phone"><img src="assets/screen-you.webp" alt="Hedge's page with his level, the week and weekly missions" width="402" height="874" loading="lazy"></div>
+        <figcaption><b>Hedge keeps you company.</b> Days you log earn gems, and gems dress him up.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="safe" aria-labelledby="yours">
+    <img src="assets/hedge-hold.png" alt="" width="140" height="140" loading="lazy">
+    <div>
+      <h2 id="yours">Your money stays on your iPhone.</h2>
+      <p>Pouch has no sign-up and never asks for a bank login. What you log lives on your phone, behind Face ID if you like. <a href="privacy.html">Privacy policy</a></p>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="q">
+    <h2 id="q">Questions</h2>
+    <details><summary>How does Pouch work out today's number?</summary><p>It takes the money for your month, sets aside your bills and what you chose to save, and shares the rest over the days left. Every spend you log moves it.</p></details>
+    <details><summary>Does it connect to my bank?</summary><p>No. You log a spend in a few taps on the keypad above, and that small habit is what keeps your money in mind.</p></details>
+    <details><summary>When can I get it?</summary><p>Pouch is being tested now and is coming to the App Store for iPhone.</p></details>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>Pouch is made by Sasanka Rasanjana in Sri Lanka.</span>
+  <nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="mailto:sasanka.rasanjana29@gmail.com">Contact</a></nav>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
