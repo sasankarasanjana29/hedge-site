@@ -397,3 +397,27 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
   .safe-art img { width: 76px; height: 76px; }
   .bento .card-copy p { font-size: 15.5px; }
 }
+
+/* ---------- No cut-off phones: the logging phone shows whole, Hedge gets a close-up window ---------- */
+@media (min-width: 1081px) {
+  .bento { grid-auto-rows: 306px; }
+  .bento .tall .clip-phone { width: 196px; margin: auto auto 0; }
+}
+.bento .tall .clip-phone { margin-bottom: 0; }
+/* The wardrobe clip framed on Hedge: the video fills a rounded window, held on the part where he is */
+.closeup { margin-top: auto; height: 172px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgba(29, 36, 51, .06); }
+.closeup video.clip { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; object-fit: cover; object-position: 50% 17%; }
+@media (max-width: 1080px) {
+  .bento .tall .clip-phone { width: 220px; margin: 12px auto 0; }
+}
+@media (max-width: 760px) {
+  .bento .tall .clip-phone { width: 190px; margin: 8px auto 0; }
+  .bento .tall { padding-bottom: 26px; }
+  .closeup { height: 190px; }
+}
+@media (max-width: 760px) {
+  .rows { padding: 4px 14px; }
+  .rows .r { gap: 10px; }
+  .rows b { font-size: 15px; white-space: nowrap; }
+  .rows .val { font-size: 13.5px; white-space: nowrap; }
+}
