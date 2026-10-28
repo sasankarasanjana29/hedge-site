@@ -270,3 +270,37 @@ details p { color: var(--soft); margin-top: 10px; }
   .js .hero .float { animation: none; }
   .card, .small-grid > div { transition: none; }
 }
+
+/* ---------- Hero, take three: Hedges and coins round the phone ---------- */
+.hero-art .island-card { display: none; }
+.hero-phone { position: absolute; z-index: 2; }
+.island.compact.on-phone { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 44%; height: 32px; padding: 0 12px 0 8px; box-shadow: none; z-index: 2; }
+.island.compact.on-phone .cring { width: 19px; height: 19px; -webkit-mask: radial-gradient(circle, transparent 6px, #000 6.5px); mask: radial-gradient(circle, transparent 6px, #000 6.5px); }
+.island.compact.on-phone b { font-size: 14px; }
+.coin { position: absolute; width: 40px; height: 40px; z-index: 1; filter: drop-shadow(0 8px 10px rgba(185, 126, 6, .28)); animation: drift 6s ease-in-out infinite alternate; }
+.coin.tilt { transform: rotate(-24deg) scaleY(.42); }
+.c1 { left: 6%; top: 18%; width: 46px; height: 46px; animation-duration: 6.5s; }
+.c2 { left: 16%; top: 7%; width: 34px; height: 34px; animation-duration: 5.2s; }
+.c3 { right: 4%; top: 12%; width: 56px; height: 56px; animation-duration: 7s; z-index: 3; }
+.c4 { right: 16%; top: 3%; width: 30px; height: 30px; animation-duration: 5.8s; }
+.c5 { right: 1%; top: 62%; width: 34px; height: 34px; animation-duration: 6.2s; z-index: 3; }
+.c6 { left: 2%; bottom: 7%; width: 40px; height: 40px; animation-duration: 5.5s; z-index: 3; }
+.c7 { left: 30%; bottom: 2%; width: 30px; height: 30px; animation-duration: 6.8s; z-index: 3; }
+.c8 { left: 10%; top: 44%; width: 26px; height: 26px; animation-duration: 4.8s; }
+@keyframes drift { from { translate: 0 0; } to { translate: 0 -12px; } }
+.hedge-peek { position: absolute; width: 150px; left: 50%; top: 40px; margin-left: -220px; z-index: 1; transform: rotate(-14deg); }
+.hero-hedge { width: 190px; right: 6px; bottom: 6px; z-index: 4; }
+.hedge-small { position: absolute; width: 104px; left: 22%; bottom: 0; z-index: 3; filter: drop-shadow(0 12px 14px rgba(29, 36, 51, .18)); }
+.react-card { left: 0; bottom: 190px; }
+.ring-card { right: -6px; top: 250px; }
+@media (prefers-reduced-motion: reduce) { .coin { animation: none; } }
+@media (max-width: 760px) {
+  .hedge-peek { width: 112px; margin-left: -170px; top: 30px; }
+  .hero-hedge { width: 132px; right: -4px; bottom: 0; }
+  .hedge-small { width: 78px; left: 14%; }
+  .react-card { left: -4px; bottom: 150px; }
+  .ring-card { top: 260px; right: -8px; }
+  .island.compact.on-phone { top: 15px; height: 28px; }
+  .island.compact.on-phone b { font-size: 12px; }
+  .c3 { width: 42px; height: 42px; }
+}
