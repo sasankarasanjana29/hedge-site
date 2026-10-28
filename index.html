@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pouch: what's safe for you to spend today?</title>
-<meta name="description" content="Try Pouch right here: type your pay and bills, see what's safe to spend today, then try a spend and watch Hedge react. Nothing you type leaves the page.">
+<title>Pouch: know what's safe to spend today</title>
+<meta name="description" content="Pouch turns your pay into one number for today, keeps every part of the month in its own pot, and lets Hedge the hedgehog cheer you on. No bank login. Coming to iPhone.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
@@ -12,101 +12,215 @@
 </head>
 <body>
 
-<header class="top">
-  <a class="brand" href="#" aria-label="Pouch"><img src="assets/icon-180.png" alt="" width="34" height="34"><span>Pouch</span></a>
+<!-- Glyphs drawn once, in the spirit of the app's SF Symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="M3.5 11.2 12 4l8.5 7.2V20a1 1 0 0 1-1 1H15v-5.5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1V21H4.5a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2.5 4h2.6l2.3 10.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.4-1.1L21 7.5H6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.7" fill="currentColor"/><circle cx="17" cy="19.5" r="1.7" fill="currentColor"/></symbol>
+  <symbol id="i-balloon" viewBox="0 0 24 24"><ellipse cx="12" cy="9" rx="6" ry="7" fill="currentColor"/><path d="M12 16v2c0 1.5 1.5 1.5 1.5 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="#fff" opacity=".9"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" fill="currentColor"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="10" y="4.6" width="4" height="1.6" rx=".8" fill="currentColor"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 7.5 12 3.5l8 4v9l-8 4-8-4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M4 7.5l8 4 8-4M12 11.5v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2H4.5z" fill="currentColor"/><path d="M10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="13" y="13" width="7.5" height="7.5" rx="2" fill="currentColor"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Pouch"><img src="assets/icon-180.png" alt="" width="34" height="34"><span>Pouch</span></a>
+  <nav class="links" aria-label="Sections">
+    <a href="#features">Features</a>
+    <a href="#hedge">Hedge</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#faq">Questions</a>
+  </nav>
   <span class="soon">Coming to iPhone</span>
 </header>
 
-<main>
-  <!-- The idea: the page is a small working Pouch. Your numbers, your safe-to-spend today, Hedge's reaction. -->
-  <section class="play" aria-labelledby="ask">
-    <div class="ask">
-      <h1 id="ask">What's safe for you to spend today?</h1>
-      <p class="sub">Pouch works it out every morning. Try it with your own numbers: nothing you type leaves this page.</p>
-      <div class="cur" role="group" aria-label="Currency">
-        <button type="button" data-cur="Rs">Rs</button>
-        <button type="button" data-cur="₹">₹</button>
-        <button type="button" data-cur="$">$</button>
-        <button type="button" data-cur="€">€</button>
-        <button type="button" data-cur="£">£</button>
+<main id="top">
+
+  <!-- ===== Hero: the promise on the left, the app composed on the right ===== -->
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Know what's <span class="hl">safe</span> to spend today.</h1>
+      <p class="lede">Pouch turns your pay into one number for today, keeps every part of the month in its own pot, and Hedge the hedgehog cheers you on.</p>
+      <div class="ctas">
+        <span class="btn primary" aria-disabled="true">Coming soon to the App Store</span>
+        <a class="btn ghost" href="#features">See the features</a>
       </div>
+      <dl class="spec">
+        <div><dt>Bank login</dt><dd>Never</dd></div>
+        <div><dt>Your data</dt><dd>On your phone</dd></div>
+        <div><dt>Languages</dt><dd>13</dd></div>
+      </dl>
     </div>
 
-    <div class="toy" id="toy">
-      <div class="seg" role="tablist" aria-label="Step">
-        <button type="button" role="tab" id="tab-month" aria-selected="true" data-step="month">Your month</button>
-        <button type="button" role="tab" id="tab-spend" aria-selected="false" data-step="spend">Try a spend</button>
+    <div class="hero-art" aria-hidden="true">
+      <div class="blob"></div>
+      <figure class="phone hero-phone"><img src="assets/screen-today.webp" alt="" width="402" height="874"></figure>
+      <!-- The island, as it shows above the phone's Home Screen -->
+      <div class="float island-card">
+        <div class="isl-top"><img src="assets/hedge-thumbsUp.png" alt=""><span>Safe today</span></div>
+        <strong>Rs 1,677</strong>
+        <div class="isl-row"><span>Last: Coffee</span><i><svg><use href="#i-plus"/></svg>Log</i></div>
       </div>
+      <div class="float react-card"><img src="assets/hedge-thumbsUp.png" alt=""><div><b>Rs 450</b><span>Fits easily.</span></div></div>
+      <div class="float ring-card">
+        <span class="ring" style="--p:.62;--c:#FF8A3D;--t:#FFE2C6"><svg><use href="#i-cart"/></svg></span>
+        <div><b>Groceries</b><span>Rs 2,630 left</span></div>
+      </div>
+      <img class="hero-hedge" src="assets/hedge-wave.png" alt="">
+    </div>
+  </section>
 
-      <!-- Step 1: the month -->
-      <div class="step" id="step-month" role="tabpanel" aria-labelledby="tab-month">
-        <button type="button" class="line on" data-field="pay"><span>Pay this month</span><b data-show="pay"></b></button>
-        <button type="button" class="line" data-field="bills"><span>Rent and bills</span><b data-show="bills"></b></button>
-        <div class="line static"><span>Save each month</span>
-          <div class="chips" role="group" aria-label="Save each month">
-            <button type="button" data-save="0">None</button>
-            <button type="button" data-save="0.2">20%</button>
-            <button type="button" data-save="0.3">30%</button>
+  <!-- ===== Bento: every feature, each card drawn in the app's own style ===== -->
+  <section class="bento-wrap" id="features">
+    <h2>Everything you need to stay on top of the month.</h2>
+    <div class="bento">
+
+      <article class="card span4 lav">
+        <div class="card-copy"><h3>One number each morning</h3><p>What you can spend today without touching rent, bills or what you save. Spend less and tomorrow's number grows.</p></div>
+        <div class="art safe-art">
+          <div class="safe-num"><small>Safe to spend today</small><strong><span>Rs</span> 1,677</strong><em>4 days left</em></div>
+          <img src="assets/hedge-thumbsUp.png" alt="" width="120" height="120">
+          <div class="month-bar"><div><b>Rs 6,710 left</b><span>of Rs 100,000</span></div><i><u style="width:93%"></u></i></div>
+        </div>
+      </article>
+
+      <article class="card span2 hon">
+        <div class="card-copy"><h3>Pots in their family colours</h3><p>Housing, food, fun and savings, each easy to spot.</p></div>
+        <div class="art rings-art">
+          <div class="pr"><span class="ring" style="--p:1;--c:#FFC21A;--t:#FFF0B8"><svg style="color:#6B4A00"><use href="#i-house"/></svg></span><b>Rent</b><small>Paid</small></div>
+          <div class="pr"><span class="ring" style="--p:.6;--c:#FF8A3D;--t:#FFE2C6"><svg style="color:#7A3300"><use href="#i-cart"/></svg></span><b>Groceries</b><small>Rs 2.6k left</small></div>
+          <div class="pr"><span class="ring" style="--p:.85;--c:#9D7BFF;--t:#E8DEFF"><svg style="color:#4A2A9E"><use href="#i-balloon"/></svg></span><b>Fun</b><small>Rs 900 left</small></div>
+          <div class="pr"><span class="ring" style="--p:.3;--c:#2FCB6B;--t:#D4F7DF"><svg style="color:#0F5C2C"><use href="#i-note"/></svg></span><b>Savings</b><small>Rs 10k left</small></div>
+        </div>
+      </article>
+
+      <article class="card span2 rose">
+        <div class="card-copy"><h3>Never red</h3><p>Go past a plan and the pot just says "extra", in grey, in its own colour.</p></div>
+        <div class="art pot-row">
+          <span class="dot" style="background:#9D7BFF"><svg><use href="#i-balloon"/></svg></span>
+          <div class="pot-mid"><div class="pot-top"><b>Fun</b><span><em>Rs 1,600</em> extra</span></div><i><u style="width:100%;background:#9D7BFF"></u></i><small>Rs 7,600 of Rs 6,000 spent</small></div>
+        </div>
+      </article>
+
+      <article class="card span2 sky">
+        <div class="card-copy"><h3>In your Dynamic Island</h3><p>Today's number on the Lock Screen too, updated after every spend.</p></div>
+        <div class="art">
+          <div class="island mini">
+            <div class="isl-top"><img src="assets/hedge-thumbsUp.png" alt=""><span>Safe today</span></div>
+            <strong>Rs 1,227</strong>
+            <div class="isl-row"><span>Last: Lunch, Rs 450</span><i><svg><use href="#i-plus"/></svg>Log</i></div>
           </div>
         </div>
-        <div class="answer" aria-live="polite">
-          <img class="hedge" id="hedge-month" src="assets/hedge-thumbsUp.png" alt="" width="120" height="120">
-          <div>
-            <small>Safe to spend today</small>
-            <strong id="safe">Rs 0</strong>
-            <span id="days"></span>
-          </div>
-        </div>
-      </div>
+      </article>
 
-      <!-- Step 2: try a spend, and Hedge reacts the way he does in the app -->
-      <div class="step" id="step-spend" role="tabpanel" aria-labelledby="tab-spend" hidden>
-        <div class="spend">
-          <img class="hedge" id="hedge-spend" src="assets/hedge-wave.png" alt="" width="120" height="120">
-          <div>
-            <strong id="spend">Rs 0</strong>
-            <span id="react" aria-live="polite">How much was it?</span>
-          </div>
+      <article class="card span2 tan">
+        <div class="card-copy"><h3>Log a spend in three taps</h3><p>Tap plus, type the amount, pick a pot.</p></div>
+        <div class="art keypad-art">
+          <div class="typed"><span>Rs</span> 450</div>
+          <div class="kp"><b>1</b><b>2</b><b>3</b><b>4</b><b class="on">5</b><b>6</b><b>7</b><b>8</b><b>9</b></div>
         </div>
-        <div class="meter" aria-hidden="true"><i id="meter-fill"></i><em id="meter-mark"></em></div>
-        <p class="tomorrow" id="tomorrow"></p>
-      </div>
+      </article>
 
-      <div class="keys" role="group" aria-label="Keypad">
-        <button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button>
-        <button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button>
-        <button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button>
-        <button type="button" data-key="00">00</button><button type="button" data-key="0">0</button><button type="button" data-key="back" aria-label="Delete">⌫</button>
+      <article class="card span3 grape" id="hedge">
+        <div class="card-copy"><h3>Hedge, dressed by you</h3><p>Every day you log earns gems, and gems unlock 51 things for him to wear.</p></div>
+        <div class="art hedge-art">
+          <img class="hedge-big" src="assets/hedge-cheer.png" alt="Hedge cheering" width="200" height="200">
+          <img class="tiles" src="assets/wardrobe-row.webp" alt="Wardrobe tiles: beanie, baseball cap, party hat" width="1094" height="367">
+        </div>
+      </article>
+
+      <article class="card span3 leaf" id="privacy">
+        <div class="card-copy"><h3>Your money stays on your iPhone</h3><p>No sign-up and no bank login. Lock it with Face ID, and widgets hide amounts while the lock is on.</p></div>
+        <div class="art rows">
+          <div class="r"><span class="tile" style="background:#15803D"><svg><use href="#i-lock"/></svg></span><b>Lock with Face ID</b><i class="switch on"></i></div>
+          <div class="r"><span class="tile" style="background:#3B8EFF"><svg><use href="#i-phone"/></svg></span><b>Account</b><span class="val">None needed</span></div>
+          <div class="r"><span class="tile" style="background:#8E94A3"><svg><use href="#i-globe"/></svg></span><b>Goes online</b><span class="val">Exchange rates only</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Feature explanations: the real screens, what each part does ===== -->
+  <section class="explain">
+    <div class="ex">
+      <figure class="phone"><img src="assets/screen-today.webp" alt="Today: the safe number, this month's money left, saving and pots" width="402" height="874" loading="lazy"></figure>
+      <div class="ex-copy">
+        <h2>Today</h2>
+        <p>The first thing you see is what's safe to spend today. Underneath sits the month at a glance: what's left, what you're saving, and every pot.</p>
+        <ol class="points">
+          <li><b>Safe to spend today.</b> Your month's money less bills and savings, shared over the days left.</li>
+          <li><b>Save each month.</b> Pick 20, 30 or 40 percent, and Pouch keeps it aside for you.</li>
+          <li><b>Latest.</b> Your last few spends, with anything new to check marked.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="ex flip">
+      <figure class="phone"><img src="assets/screen-budget.webp" alt="Budget: what's left this month, pots grouped by family" width="402" height="874" loading="lazy"></figure>
+      <div class="ex-copy">
+        <h2>Budget</h2>
+        <p>Every pot with its plan and what's left, grouped by family. Budget by calendar month or from payday to payday.</p>
+        <ol class="points">
+          <li><b>Bills tick to Paid</b> once they go out, so you know they're done.</li>
+          <li><b>Overview and insights</b> show where the month went.</li>
+          <li><b>Leftovers can carry</b> into next month when you switch it on.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="ex">
+      <figure class="phone"><img src="assets/screen-entries.webp" alt="Entries: came in, went out and moved this month, then every entry by day" width="402" height="874" loading="lazy"></figure>
+      <div class="ex-copy">
+        <h2>Entries</h2>
+        <p>Everything that came in, went out and moved this month, day by day. Pay and regular bills post themselves on their day.</p>
+        <ol class="points">
+          <li><b>Coming up</b> lists what's scheduled for the next six weeks.</li>
+          <li><b>Search and filters</b> find any entry in seconds.</li>
+          <li><b>Swipe to delete,</b> with an undo if you change your mind.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="ex flip">
+      <figure class="phone"><img src="assets/screen-plans.webp" alt="Wallets: net worth, everyday money, savings and cards" width="402" height="874" loading="lazy"></figure>
+      <div class="ex-copy">
+        <h2>Wallets</h2>
+        <p>Cash, bank, savings and cards in one place, with your net worth on top. Moving money between them is one entry.</p>
+        <ol class="points">
+          <li><b>Net worth</b> at a glance: accounts less what's owed on cards.</li>
+          <li><b>Each account</b> gets its own icon and colour.</li>
+          <li><b>Paying a card</b> is a move, so it never counts as spending twice.</li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <!-- What that number is, in the app -->
-  <section class="app" aria-labelledby="every">
-    <h2 id="every">That's Pouch, every day.</h2>
-    <div class="three">
-      <figure><div class="phone"><img src="assets/screen-today.webp" alt="Pouch's Today screen: the safe-to-spend number, with pots for rent, groceries, fun and savings" width="402" height="874" loading="lazy"></div>
-        <figcaption><b>One number each morning.</b> Spend less today and tomorrow's grows.</figcaption></figure>
-      <figure><div class="phone"><img src="assets/screen-budget.webp" alt="The Budget tab, each pot in its family's colour" width="402" height="874" loading="lazy"></div>
-        <figcaption><b>A pot for each part of the month.</b> Going past a plan says "extra" in grey. Pouch never turns red at you.</figcaption></figure>
-      <figure><div class="phone"><img src="assets/screen-you.webp" alt="Hedge's page with his level, the week and weekly missions" width="402" height="874" loading="lazy"></div>
-        <figcaption><b>Hedge keeps you company.</b> Days you log earn gems, and gems dress him up.</figcaption></figure>
+  <!-- ===== Small but useful ===== -->
+  <section class="smalls">
+    <h2>And the small things that make it stick.</h2>
+    <div class="small-grid">
+      <div><span class="tile" style="background:#7A5AF8"><svg><use href="#i-grid"/></svg></span><b>Home Screen widget</b><p>Safe today at a glance, with Hedge.</p></div>
+      <div><span class="tile" style="background:#FFB020"><svg><use href="#i-bell"/></svg></span><b>A gentle reminder</b><p>Once a day, at the hour you pick.</p></div>
+      <div><span class="tile" style="background:#3B8EFF"><svg><use href="#i-globe"/></svg></span><b>13 languages</b><p>Including Sinhala, Tamil and Hindi.</p></div>
+      <div><span class="tile" style="background:#1FCFB4"><svg><use href="#i-box"/></svg></span><b>Weekly backups</b><p>Saved to Files on your phone, and export to CSV any time.</p></div>
     </div>
   </section>
 
-  <section class="safe" aria-labelledby="yours">
-    <img src="assets/hedge-hold.png" alt="" width="140" height="140" loading="lazy">
-    <div>
-      <h2 id="yours">Your money stays on your iPhone.</h2>
-      <p>Pouch has no sign-up and never asks for a bank login. What you log lives on your phone, behind Face ID if you like. <a href="privacy.html">Privacy policy</a></p>
-    </div>
-  </section>
-
-  <section class="faq" aria-labelledby="q">
-    <h2 id="q">Questions</h2>
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <h2>Questions</h2>
     <details><summary>How does Pouch work out today's number?</summary><p>It takes the money for your month, sets aside your bills and what you chose to save, and shares the rest over the days left. Every spend you log moves it.</p></details>
-    <details><summary>Does it connect to my bank?</summary><p>No. You log a spend in a few taps on the keypad above, and that small habit is what keeps your money in mind.</p></details>
+    <details><summary>Does it connect to my bank?</summary><p>No. You log a spend in a few taps, and that small habit is what keeps your money in mind. Pouch never asks for a bank login.</p></details>
+    <details><summary>Where is my data kept?</summary><p>Only on your iPhone. There is no Pouch account and no Pouch server. A backup is saved once a week in the Files app.</p></details>
     <details><summary>When can I get it?</summary><p>Pouch is being tested now and is coming to the App Store for iPhone.</p></details>
+  </section>
+
+  <section class="end">
+    <img src="assets/hedge-cheer.png" alt="Hedge cheering" width="170" height="170" loading="lazy">
+    <h2>Meet Hedge soon.</h2>
+    <p>Coming to iPhone.</p>
   </section>
 </main>
 
