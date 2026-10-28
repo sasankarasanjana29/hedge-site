@@ -421,3 +421,10 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
   .rows b { font-size: 15px; white-space: nowrap; }
   .rows .val { font-size: 13.5px; white-space: nowrap; }
 }
+
+.end .hint { color: var(--faint); font-weight: 600; font-size: 14px; }
+
+/* 404 */
+.lost { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; }
+.lost img { width: 150px; height: 150px; }
+.lost p { color: var(--soft); }
