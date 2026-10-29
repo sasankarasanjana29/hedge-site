@@ -479,3 +479,5 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
   -webkit-mask: radial-gradient(circle closest-side, transparent 60%, #000 63%); mask: radial-gradient(circle closest-side, transparent 60%, #000 63%);
 }
 .phone .island.compact.on-phone b, .phone .island.compact.on-shot b { font-size: calc(var(--s) * .042); }
+/* The phones show the plain island of an iPhone 17 Pro: black, no Live Activity in it */
+.phone .island.compact.on-phone, .phone .island.compact.on-shot { width: calc(var(--s) * .312); padding: 0; }
