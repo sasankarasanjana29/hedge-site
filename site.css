@@ -439,31 +439,20 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 .island.mini .isl-row i { padding: 0 14px; }
 .isl-row i svg { width: 12px; height: 12px; }
 
-/* ---------- The logging phone: as big as the card allows, never cut off ----------
-   On wide screens the card has a fixed height, so the phone takes all the room under the
-   copy and its width follows from the screen's shape. */
+/* ---------- The logging phone: bigger, a real iPhone shape, never cut off ----------
+   A fixed width with the screen's own shape (the video sets the height), sitting at the card's
+   foot. Rows are tall enough for it on every desktop width (checked 1081 to 1440). */
 @media (min-width: 1081px) {
   .bento { grid-auto-rows: 318px; }
-  .bento .tall { padding-bottom: 20px; }
-  .bento .tall .clip-phone { flex: 1 1 0; min-height: 0; width: fit-content; max-width: 100%; margin: 6px auto 0; padding: 7px; border-radius: 46px; display: flex; }
-  .bento .tall .clip-phone video.clip { height: 100%; width: auto; border-radius: 39px; }
+  .bento .tall { padding-bottom: 22px; }
+  .bento .tall .clip-phone { width: 228px; margin: auto auto 0; padding: 7px; border-radius: 42px; }
+  .bento .tall .clip-phone video.clip { border-radius: 35px; }
 }
 @media (max-width: 1080px) {
   .bento .tall .clip-phone { width: 250px; }
 }
 @media (max-width: 760px) {
   .bento .tall .clip-phone { width: 230px; }
-}
-
-/* ---------- Tablets: one column, so the hero copy and section headings sit centred ----------
-   Between phone and desktop the art drops under the copy and centres; the copy, buttons and
-   facts centre with it instead of hugging the left edge. Phones keep left-aligned text. */
-@media (min-width: 761px) and (max-width: 1080px) {
-  .hero-copy { margin-inline: auto; text-align: center; }
-  .hero-copy .lede { margin-inline: auto; }
-  .hero-copy .ctas { justify-content: center; }
-  .hero-copy .spec { justify-content: center; }
-  .bento-wrap h2, .smalls h2, .faq h2 { text-align: center; margin-inline: auto; }
 }
 
 /* ---------- Every phone has its Dynamic Island, with Pouch's Live Activity in it ----------
