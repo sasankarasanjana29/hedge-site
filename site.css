@@ -462,3 +462,20 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 .island.compact.on-shot { position: absolute; z-index: 2; left: 50%; top: 3.6cqw; transform: translateX(-50%); width: 40cqw; height: 9.4cqw; padding: 0 3.4cqw 0 2.2cqw; box-shadow: none; }
 .island.compact.on-shot .cring { width: 5.6cqw; height: 5.6cqw; -webkit-mask: radial-gradient(circle, transparent 1.75cqw, #000 1.9cqw); mask: radial-gradient(circle, transparent 1.75cqw, #000 1.9cqw); }
 .island.compact.on-shot b { font-size: 4.1cqw; }
+
+/* ---------- Island placement measured from a real iPhone 17 Pro recording ----------
+   Of the screen's width: 3.5% down from the screen's top edge, 9.1% tall; the plain island is
+   31% wide, and the Live Activity's compact view widens it to about 42%. Screen width is the
+   phone's width less its 9px bezel on each side. */
+.hero-phone, .ex .phone { container-type: inline-size; }
+.phone .island.compact.on-phone, .phone .island.compact.on-shot {
+  --s: calc(100cqw - 18px);
+  position: absolute; z-index: 2; left: 50%; transform: translateX(-50%);
+  top: calc(9px + var(--s) * .035); height: calc(var(--s) * .091); width: calc(var(--s) * .38);
+  padding: 0 calc(var(--s) * .028); border-radius: 999px; box-shadow: none;
+}
+.phone .island.compact.on-phone .cring, .phone .island.compact.on-shot .cring {
+  width: calc(var(--s) * .056); height: calc(var(--s) * .056);
+  -webkit-mask: radial-gradient(circle closest-side, transparent 60%, #000 63%); mask: radial-gradient(circle closest-side, transparent 60%, #000 63%);
+}
+.phone .island.compact.on-phone b, .phone .island.compact.on-shot b { font-size: calc(var(--s) * .042); }
