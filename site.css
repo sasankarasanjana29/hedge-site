@@ -428,3 +428,40 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 .lost { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; }
 .lost img { width: 150px; height: 150px; }
 .lost p { color: var(--soft); }
+
+/* ---------- The island as the app draws it (app/src/widgets/PouchDay.tsx) ----------
+   Rings are capacity gauges filled by the share of the month still free (--p); the expanded
+   view has the ring top right and a tinted purple Log pill, as Apple's own island buttons are. */
+.cring { background: conic-gradient(#A08BFF calc(var(--p, .6) * 360deg), rgba(160, 139, 255, .25) 0); }
+.isl-top .ering { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; background: conic-gradient(#A08BFF calc(var(--p, .6) * 360deg), rgba(160, 139, 255, .25) 0); -webkit-mask: radial-gradient(circle, transparent 10px, #000 10.5px); mask: radial-gradient(circle, transparent 10px, #000 10.5px); }
+.isl-top { width: 100%; }
+.isl-row i { background: #352A63; color: #E2DBFF; min-width: 82px; height: 32px; justify-content: center; padding: 0 14px; font-size: 15px; }
+.island.mini .isl-row i { padding: 0 14px; }
+.isl-row i svg { width: 12px; height: 12px; }
+
+/* ---------- The logging phone: as big as the card allows, never cut off ----------
+   On wide screens the card has a fixed height, so the phone takes all the room under the
+   copy and its width follows from the screen's shape. */
+@media (min-width: 1081px) {
+  .bento { grid-auto-rows: 318px; }
+  .bento .tall { padding-bottom: 20px; }
+  .bento .tall .clip-phone { flex: 1 1 0; min-height: 0; width: fit-content; max-width: 100%; margin: 6px auto 0; padding: 7px; border-radius: 46px; display: flex; }
+  .bento .tall .clip-phone video.clip { height: 100%; width: auto; border-radius: 39px; }
+}
+@media (max-width: 1080px) {
+  .bento .tall .clip-phone { width: 250px; }
+}
+@media (max-width: 760px) {
+  .bento .tall .clip-phone { width: 230px; }
+}
+
+/* ---------- Tablets: one column, so the hero copy and section headings sit centred ----------
+   Between phone and desktop the art drops under the copy and centres; the copy, buttons and
+   facts centre with it instead of hugging the left edge. Phones keep left-aligned text. */
+@media (min-width: 761px) and (max-width: 1080px) {
+  .hero-copy { margin-inline: auto; text-align: center; }
+  .hero-copy .lede { margin-inline: auto; }
+  .hero-copy .ctas { justify-content: center; }
+  .hero-copy .spec { justify-content: center; }
+  .bento-wrap h2, .smalls h2, .faq h2 { text-align: center; margin-inline: auto; }
+}
