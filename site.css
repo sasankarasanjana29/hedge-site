@@ -465,3 +465,11 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
   .hero-copy .spec { justify-content: center; }
   .bento-wrap h2, .smalls h2, .faq h2 { text-align: center; margin-inline: auto; }
 }
+
+/* ---------- Every phone has its Dynamic Island, with Pouch's Live Activity in it ----------
+   Screenshots from the simulator leave the island out, so it is drawn on top, sized from the
+   phone's own width (container units) so it sits right at any size. */
+.ex .phone, .clip-phone { position: relative; container-type: inline-size; }
+.island.compact.on-shot { position: absolute; z-index: 2; left: 50%; top: 3.6cqw; transform: translateX(-50%); width: 40cqw; height: 9.4cqw; padding: 0 3.4cqw 0 2.2cqw; box-shadow: none; }
+.island.compact.on-shot .cring { width: 5.6cqw; height: 5.6cqw; -webkit-mask: radial-gradient(circle, transparent 1.75cqw, #000 1.9cqw); mask: radial-gradient(circle, transparent 1.75cqw, #000 1.9cqw); }
+.island.compact.on-shot b { font-size: 4.1cqw; }
