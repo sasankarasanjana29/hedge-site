@@ -63,8 +63,11 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 
 .hero-art { position: relative; height: 740px; }
 .blob { position: absolute; inset: 110px 10px 50px 50px; border-radius: 48px; background: linear-gradient(150deg, #EFEAFF, #E4F0FF 60%, #FFF0E3); }
-.phone { margin: 0; padding: 9px; background: #0E0E10; border-radius: 52px; box-shadow: 0 40px 80px -36px rgba(29, 36, 51, .55); }
-.phone img { width: 100%; height: auto; border-radius: 44px; }
+.phone { position: relative; display: flow-root; margin: 0; padding: 0; border-radius: 16% / 7.8%; box-shadow: 0 40px 80px -36px rgba(29, 36, 51, .55); }
+/* Apple's iPhone 18 Pro bezel in Black, laid over the screen. Its opening is the 402 x 874 pt screen,
+   at these insets of the bezel's width (margins, so the percentages are of the phone, not the page) */
+.phone::after { content: ""; position: absolute; inset: 0; z-index: 2; background: url("assets/phone-frame.webp") center / 100% 100% no-repeat; pointer-events: none; }
+.phone > img, .phone > video.clip { display: block; width: 89.333%; height: auto; margin: 5.185% 5.333% 5.111%; border-radius: 13% / 6%; }
 .hero-phone { position: absolute; width: 290px; left: 50%; top: 74px; transform: translateX(-38%); }
 .float { position: absolute; background: #fff; border-radius: 22px; box-shadow: 0 20px 40px -18px rgba(29, 36, 51, .35), 0 0 0 1px rgba(29, 36, 51, .04); }
 .island-card, .island { background: #000; color: #fff; border-radius: 34px; padding: 14px 18px 16px; display: grid; gap: 4px; }
@@ -273,9 +276,6 @@ details p { color: var(--soft); margin-top: 10px; }
 /* ---------- Hero, take three: Hedges and coins round the phone ---------- */
 .hero-art .island-card { display: none; }
 .hero-phone { position: absolute; z-index: 2; }
-.island.compact.on-phone { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 44%; height: 32px; padding: 0 12px 0 8px; box-shadow: none; z-index: 2; }
-.island.compact.on-phone .cring { width: 19px; height: 19px; -webkit-mask: radial-gradient(circle, transparent 6px, #000 6.5px); mask: radial-gradient(circle, transparent 6px, #000 6.5px); }
-.island.compact.on-phone b { font-size: 14px; }
 .coin { position: absolute; width: 40px; height: 40px; z-index: 1; filter: drop-shadow(0 8px 10px rgba(185, 126, 6, .28)); animation: drift 6s ease-in-out infinite alternate; }
 .coin.tilt { transform: rotate(-24deg) scaleY(.42); }
 .c1 { left: 6%; top: 18%; width: 46px; height: 46px; animation-duration: 6.5s; }
@@ -299,8 +299,6 @@ details p { color: var(--soft); margin-top: 10px; }
   .hedge-small { width: 78px; left: 14%; }
   .react-card { left: -4px; bottom: 150px; }
   .ring-card { top: 260px; right: -8px; }
-  .island.compact.on-phone { top: 15px; height: 28px; }
-  .island.compact.on-phone b { font-size: 12px; }
   .c3 { width: 42px; height: 42px; }
 }
 
@@ -314,10 +312,9 @@ details p { color: var(--soft); margin-top: 10px; }
 .bento h3 { font-size: 27px; }
 .lav-deep { background: linear-gradient(165deg, #7A5AF8, #5B3FD6); color: #fff; }
 .lav-deep .card-copy p { color: #E4DCFF; }
-.clip-phone { width: 250px; margin: auto auto -96px; padding: 8px; border-radius: 44px; box-shadow: 0 40px 70px -30px rgba(20, 10, 60, .55); }
-.lav-deep .clip-phone { background: #0E0E10; box-shadow: 0 40px 70px -24px rgba(20, 10, 60, .7), 0 0 0 1px rgba(255, 255, 255, .12); }
-video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto; border-radius: 37px; background: #fff; object-fit: cover; }
-.ex .phone video.clip { border-radius: 44px; }
+.clip-phone { width: 250px; margin: auto auto -96px; box-shadow: 0 40px 70px -30px rgba(20, 10, 60, .55); }
+.lav-deep .clip-phone { box-shadow: 0 40px 70px -24px rgba(20, 10, 60, .7); }
+video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto; border-radius: 13% / 6%; background: #fff; object-fit: cover; }
 .rings-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: #fff; border-radius: 22px; padding: 22px 14px; }
 .rings-row .pr .ring { width: 70px; height: 70px; }
 
@@ -445,8 +442,7 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 @media (min-width: 1081px) {
   .bento { grid-auto-rows: 318px; }
   .bento .tall { padding-bottom: 22px; }
-  .bento .tall .clip-phone { width: 228px; margin: auto auto 0; padding: 7px; border-radius: 42px; }
-  .bento .tall .clip-phone video.clip { border-radius: 35px; }
+  .bento .tall .clip-phone { width: 228px; margin: auto auto 0; }
 }
 @media (max-width: 1080px) {
   .bento .tall .clip-phone { width: 250px; }
@@ -454,30 +450,3 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 @media (max-width: 760px) {
   .bento .tall .clip-phone { width: 230px; }
 }
-
-/* ---------- Every phone has its Dynamic Island, with Pouch's Live Activity in it ----------
-   Screenshots from the simulator leave the island out, so it is drawn on top, sized from the
-   phone's own width (container units) so it sits right at any size. */
-.ex .phone, .clip-phone { position: relative; container-type: inline-size; }
-.island.compact.on-shot { position: absolute; z-index: 2; left: 50%; top: 3.6cqw; transform: translateX(-50%); width: 40cqw; height: 9.4cqw; padding: 0 3.4cqw 0 2.2cqw; box-shadow: none; }
-.island.compact.on-shot .cring { width: 5.6cqw; height: 5.6cqw; -webkit-mask: radial-gradient(circle, transparent 1.75cqw, #000 1.9cqw); mask: radial-gradient(circle, transparent 1.75cqw, #000 1.9cqw); }
-.island.compact.on-shot b { font-size: 4.1cqw; }
-
-/* ---------- Island placement measured from a real iPhone 17 Pro recording ----------
-   Of the screen's width: 3.5% down from the screen's top edge, 9.1% tall; the plain island is
-   31% wide, and the Live Activity's compact view widens it to about 42%. Screen width is the
-   phone's width less its 9px bezel on each side. */
-.hero-phone, .ex .phone { container-type: inline-size; }
-.phone .island.compact.on-phone, .phone .island.compact.on-shot {
-  --s: calc(100cqw - 18px);
-  position: absolute; z-index: 2; left: 50%; transform: translateX(-50%);
-  top: calc(9px + var(--s) * .035); height: calc(var(--s) * .091); width: calc(var(--s) * .38);
-  padding: 0 calc(var(--s) * .028); border-radius: 999px; box-shadow: none;
-}
-.phone .island.compact.on-phone .cring, .phone .island.compact.on-shot .cring {
-  width: calc(var(--s) * .056); height: calc(var(--s) * .056);
-  -webkit-mask: radial-gradient(circle closest-side, transparent 60%, #000 63%); mask: radial-gradient(circle closest-side, transparent 60%, #000 63%);
-}
-.phone .island.compact.on-phone b, .phone .island.compact.on-shot b { font-size: calc(var(--s) * .042); }
-/* The phones show the plain island of an iPhone 17 Pro: black, no Live Activity in it */
-.phone .island.compact.on-phone, .phone .island.compact.on-shot { width: calc(var(--s) * .312); padding: 0; }
