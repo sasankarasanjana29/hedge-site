@@ -63,7 +63,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 
 .hero-art { position: relative; height: 740px; }
 .blob { position: absolute; inset: 110px 10px 50px 50px; border-radius: 48px; background: linear-gradient(150deg, #EFEAFF, #E4F0FF 60%, #FFF0E3); }
-.phone { position: relative; display: flow-root; margin: 0; padding: 0; border-radius: 16% / 7.8%; box-shadow: 0 40px 80px -36px rgba(29, 36, 51, .55); }
+.phone { position: relative; display: flow-root; margin: 0; padding: 0; filter: drop-shadow(0 26px 28px rgba(29, 36, 51, .26)); }
+/* The shadow follows the bezel's own outline: the bezel image has a clear margin round the phone, so a box-shadow left a white rim */
 /* Apple's iPhone 18 Pro bezel in Black, laid over the screen. Its opening is the 402 x 874 pt screen,
    at these insets of the bezel's width (margins, so the percentages are of the phone, not the page) */
 .phone::after { content: ""; position: absolute; inset: 0; z-index: 2; background: url("assets/phone-frame.webp") center / 100% 100% no-repeat; pointer-events: none; }
@@ -312,8 +313,8 @@ details p { color: var(--soft); margin-top: 10px; }
 .bento h3 { font-size: 27px; }
 .lav-deep { background: linear-gradient(165deg, #7A5AF8, #5B3FD6); color: #fff; }
 .lav-deep .card-copy p { color: #E4DCFF; }
-.clip-phone { width: 250px; margin: auto auto -96px; box-shadow: 0 40px 70px -30px rgba(20, 10, 60, .55); }
-.lav-deep .clip-phone { box-shadow: 0 40px 70px -24px rgba(20, 10, 60, .7); }
+.clip-phone { width: 250px; margin: auto auto -96px; filter: drop-shadow(0 26px 28px rgba(20, 10, 60, .34)); }
+.lav-deep .clip-phone { filter: drop-shadow(0 26px 28px rgba(20, 10, 60, .5)); }
 video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto; border-radius: 13% / 6%; background: #fff; object-fit: cover; }
 .rings-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: #fff; border-radius: 22px; padding: 22px 14px; }
 .rings-row .pr .ring { width: 70px; height: 70px; }
