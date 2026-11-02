@@ -511,3 +511,116 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
   .faq-art { max-width: 380px; margin: 0 auto 8px; }
 }
 .end .end-art { max-width: 500px; margin: -20px 0 -4px; }
+
+/* ---------- The screens: five chunky tabs over one panel at a time ----------
+   Copy sits on white so it reads like the rest of the page; the colour lives on a flat stage that holds the
+   whole phone. Only the tabs get the app's chunky press: a face on a base of the same shape, 4pt lower. */
+.screens { margin-top: 140px; }
+.tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 36px; padding: 2px 2px 6px; }
+.tab { display: flex; align-items: center; gap: 10px; min-width: 0; height: 58px; padding: 0 14px 0 10px; border: 0; border-radius: 18px; background: #fff; box-shadow: 0 0 0 2px var(--line), 0 4px 0 2px var(--line); color: var(--soft); font: inherit; font-weight: 800; font-size: 16px; white-space: nowrap; cursor: pointer; transition: transform .1s ease, box-shadow .1s ease, background .15s ease, color .15s ease; }
+.tab:hover { color: var(--ink); }
+.tab:active { transform: translateY(4px); box-shadow: 0 0 0 2px var(--line), 0 0 0 2px var(--line); }
+.tab[aria-selected="true"] { background: var(--tint); color: var(--lip); box-shadow: 0 0 0 2px var(--brand), 0 4px 0 2px var(--brand); }
+.tab[aria-selected="true"]:active { box-shadow: 0 0 0 2px var(--brand), 0 0 0 2px var(--brand); }
+.tab-dot { flex: none; width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; color: var(--ink); }
+.tab-dot svg { width: 18px; height: 18px; }
+
+.panel { display: grid; grid-template-columns: minmax(0, 1fr) 500px; gap: 64px; align-items: center; margin-top: 40px; }
+.panel + .panel { margin-top: 80px; }
+.js .panel + .panel { margin-top: 40px; }
+.js .panel:not(.on) { display: none; }
+.js .panel.swap { animation: panel-in .32s cubic-bezier(.23, 1, .32, 1); }
+@keyframes panel-in { from { opacity: 0; transform: translateY(10px); } }
+.panel-copy h3 { font-size: 40px; letter-spacing: -0.03em; line-height: 1.05; }
+.panel-copy > p { color: var(--soft); font-size: 19px; margin-top: 14px; max-width: 540px; }
+.panel .points { margin-top: 26px; }
+
+.stage { position: relative; display: grid; place-items: center; padding: 36px; border-radius: 36px; overflow: hidden; isolation: isolate; }
+.stage::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(45% 50% at 50% 55%, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 70%); }
+.stage .phone { width: 250px; filter: drop-shadow(0 22px 26px rgba(29, 36, 51, .28)); }
+.st-purple { background: linear-gradient(160deg, #E9C9FF, #CE82FF 60%, #B970FF); }
+.st-blue { background: linear-gradient(160deg, #A8E3FD, #49C0F8 60%, #1FB2F6); }
+.st-green { background: linear-gradient(160deg, #C6F59A, #89E219 60%, #62D20A); }
+.st-gold { background: linear-gradient(160deg, #FFE88A, #FFC800 60%, #FFB300); }
+.st-pink { background: linear-gradient(160deg, #FFD6E9, #FF9AC8 60%, #FF7BB5); }
+/* Two white sparkles and a coin, as in the app's own moments */
+.deco { position: absolute; z-index: -1; pointer-events: none; }
+.stage .k1 { left: 40px; top: 44px; width: 38px; height: 38px; color: #fff; }
+.stage .k2 { left: 92px; top: 108px; width: 20px; height: 20px; color: #fff; opacity: .9; }
+.stage .cn { right: 44px; bottom: 64px; width: 48px; height: 48px; transform: rotate(-16deg); filter: drop-shadow(0 6px 8px rgba(120, 80, 0, .22)); }
+
+/* ---------- Footer: purple, tucked under the page's rounded foot, with the name huge at the bottom ---------- */
+.footer { position: relative; margin-top: 120px; padding-top: 56px; overflow: hidden; color: #fff; background: radial-gradient(70% 90% at 100% 0%, rgba(142, 115, 255, .9), rgba(142, 115, 255, 0) 60%), radial-gradient(60% 80% at 0% 100%, #4A2FC4, rgba(74, 47, 196, 0) 65%), #6247E8; }
+.footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 56px; background: var(--page); border-radius: 0 0 56px 56px; }
+.footer-in { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 64px 20px 0; }
+.footer-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; font-size: 26px; letter-spacing: -0.02em; }
+.footer-brand img { border-radius: 11px; }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 400px) 1fr; gap: 48px; margin-top: 52px; }
+.reach > b, .footer-cols b { display: block; font-weight: 800; font-size: 15px; margin-bottom: 14px; }
+.reach-card { display: flex; align-items: center; gap: 14px; padding: 14px 20px 14px 14px; border-radius: 22px; background: rgba(255, 255, 255, .12); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); text-decoration: none; transition: background .2s ease; }
+.reach-card:hover { background: rgba(255, 255, 255, .18); }
+.reach-icon { flex: none; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--brand); }
+.reach-icon svg { width: 22px; height: 22px; }
+.reach-card strong { display: block; font-size: 17px; }
+.reach-card small { display: block; font-size: 14px; font-weight: 600; }
+.footer-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 150px)); justify-content: end; gap: 24px; }
+.footer-cols a { display: block; padding: 5px 0; text-decoration: none; font-weight: 650; font-size: 15.5px; }
+.footer-cols a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.footer-base { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; margin-top: 64px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .22); font-size: 14px; font-weight: 600; }
+.wordmark { margin: 28px 0 -5.4vw; text-align: center; white-space: nowrap; font-weight: 900; font-size: 30vw; line-height: .8; letter-spacing: -0.06em; color: transparent; background: linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .05) 85%); -webkit-background-clip: text; background-clip: text; user-select: none; }
+.footer :focus-visible { outline-color: #fff; }
+
+@media (max-width: 1080px) {
+  .panel { grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; }
+  .stage .phone { width: 220px; }
+  .tab { font-size: 15px; gap: 8px; padding: 0 10px 0 8px; }
+  .tab-dot { width: 32px; height: 32px; }
+}
+@media (max-width: 760px) {
+  .screens { margin-top: 100px; }
+  .tabs { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: max-content; gap: 10px; overflow-x: auto; scrollbar-width: none; margin: 28px -20px 0; padding: 2px 20px 8px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { height: 54px; padding: 0 16px 0 9px; }
+  .panel { grid-template-columns: 1fr; gap: 26px; margin-top: 22px; }
+  .stage { order: -1; padding: 28px; border-radius: 30px; }
+  .stage .phone { width: 206px; }
+  .stage .k1 { left: 22px; top: 26px; width: 30px; height: 30px; }
+  .stage .k2 { left: 58px; top: 76px; width: 16px; height: 16px; }
+  .stage .cn { right: 22px; bottom: 40px; width: 38px; height: 38px; }
+  .panel-copy h3 { font-size: 32px; }
+  .panel-copy > p { font-size: 17px; }
+  .footer { margin-top: 90px; padding-top: 40px; }
+  .footer::before { height: 40px; border-radius: 0 0 40px 40px; }
+  .footer-in { padding-top: 48px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; }
+  .footer-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: start; }
+  .footer-base { margin-top: 44px; }
+  .wordmark { font-size: 34vw; margin-bottom: -6vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab, .reach-card { transition: none; }
+  .js .panel.swap { animation: none; }
+}
+
+/* ---------- Sleeping Hedge: slow breaths, and z's that drift up from him, over and over ----------
+   The z's he was drawn with are painted out of hedge-sleepy-still.png and drawn here instead. One breath
+   and one z take the same 3.6s, so each z leaves on an out-breath. With Reduce Motion two z's sit still. */
+.hedge-peek { container-type: inline-size; }
+.hedge-peek img { width: 100%; height: auto; transform-origin: 50% 92%; animation: breathe 3.6s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.025, 1.04); } }
+.z { position: absolute; left: 76%; top: 15%; font-weight: 900; line-height: 1; color: #7C8BD6; text-shadow: 0 0 6px #fff, 0 0 2px #fff; opacity: 0; animation: snooze 3.6s cubic-bezier(.33, 0, .4, 1) infinite; }
+/* Negative delays: the loop is already under way when the page opens, so z's are in the air from the start */
+.z1 { font-size: 12cqw; animation-delay: -2.4s; }
+.z2 { font-size: 15cqw; animation-delay: -1.2s; }
+.z3 { font-size: 19cqw; }
+@keyframes snooze {
+  0% { opacity: 0; transform: translate(0, 0) scale(.5) rotate(-12deg); }
+  18% { opacity: 1; }
+  70% { opacity: .9; }
+  100% { opacity: 0; transform: translate(20cqw, -36cqw) scale(1.15) rotate(10deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hedge-peek img, .z { animation: none; }
+  .z1 { opacity: 1; left: 85%; top: 6%; }
+  .z2 { opacity: 1; left: 79%; top: 14%; }
+}

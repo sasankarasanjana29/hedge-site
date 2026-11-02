@@ -13,7 +13,7 @@ document.querySelectorAll('.hero .float').forEach((el, i) => el.style.setPropert
 const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!still && 'IntersectionObserver' in window) {
   const groups = [...document.querySelectorAll('.bento, .small-grid')];
-  const items = [...document.querySelectorAll('.bento-wrap h2, .ex, .smalls h2, .faq, .end')];
+  const items = [...document.querySelectorAll('.bento-wrap h2, .screens h2, .screens .tabs, .smalls h2, .faq, .end')];
   // Cards in a grid stagger a little, left to right.
   groups.forEach((g) => [...g.children].forEach((c, i) => { c.style.setProperty('--d', `${(i % 3) * 70}ms`); items.push(c); }));
   const seen = new IntersectionObserver((entries) => {
@@ -82,6 +82,42 @@ if (hedge && !still) {
   window.addEventListener('pointercancel', () => goHome(1200), { passive: true });
   document.documentElement.addEventListener('mouseleave', () => goHome(300));
   window.addEventListener('scroll', () => { if (pointer) aim(); }, { passive: true });
+}
+
+// The screens: a tab shows its panel and hides the others. Arrow keys move along the tabs, and a link to
+// a panel's id (#after-you-pay) opens that one.
+const tabs = [...document.querySelectorAll('.screens .tab')];
+if (tabs.length) {
+  const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+  const show = (i, focus) => {
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+    panels.forEach((p, k) => { p.classList.toggle('on', k === i); p.classList.remove('swap'); });
+    void panels[i].offsetWidth; // restart the fade for a panel shown again
+    panels[i].classList.add('swap');
+    const row = tabs[i].parentElement;
+    if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: tabs[i].offsetLeft - row.offsetLeft - 20, behavior: still ? 'auto' : 'smooth' });
+    if (focus) tabs[i].focus();
+  };
+  tabs.forEach((t, k) => {
+    t.addEventListener('click', () => show(k));
+    t.addEventListener('keydown', (e) => {
+      const to = { ArrowRight: k + 1, ArrowLeft: k - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (to === undefined) return;
+      e.preventDefault();
+      show((to + tabs.length) % tabs.length, true);
+    });
+  });
+  const fromHash = panels.findIndex((p) => '#' + p.id === location.hash);
+  if (fromHash > 0) show(fromHash);
+  // Hidden panels' screenshots wait for display; fetch them once the section is near, so a tap shows them at once
+  if ('IntersectionObserver' in window) {
+    const near = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      document.querySelectorAll('.screens img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+      near.disconnect();
+    }, { rootMargin: '800px 0px' });
+    near.observe(document.querySelector('.screens'));
+  }
 }
 
 // The app clips play only while on screen (and never with Reduce Motion, which keeps the poster).
