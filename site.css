@@ -456,18 +456,58 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 .hero-hedge img { width: 100%; height: auto; }
 .hero-hedge .eyes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 
-/* ---------- Illustrations: Hedge beside the questions, and at the end ---------- */
-.faq-art { height: auto; }
+/* ---------- Two scenes drawn in code: Hedge beside the questions, and at the end ----------
+   Everything inside is sized in container units (cqw), so a scene scales as one picture. */
+.scene { position: relative; width: 100%; container-type: inline-size; }
+.scene > * { position: absolute; }
+.scene .s-blob { inset: 12% 6% 9% 9%; background: #ECE6FF; border-radius: 46% 54% 42% 58% / 56% 44% 56% 44%; }
+.scene .s-floor { left: 12%; right: 10%; bottom: 2%; height: 4.4cqw; border-radius: 50%; background: #DCD4F4; }
+.scene .coin { animation: none; }
+.scene .s-spark { color: #FFC21A; }
+.scene img.s-hedge { height: auto; filter: drop-shadow(0 2cqw 2.4cqw rgba(29, 36, 51, .16)); }
+
+/* The phone with today's gauge */
+.scene-phone { aspect-ratio: 4 / 3; }
+.mini-phone { left: 9%; top: 15%; width: 37cqw; height: 54cqw; box-sizing: border-box; padding: 3.6cqw 3.4cqw; display: flex; flex-direction: column; gap: 3cqw; background: #FBFAFF; border: 1.7cqw solid #CBC4EE; border-radius: 8cqw; transform: rotate(-6deg); box-shadow: 0 3cqw 5cqw -2cqw rgba(74, 52, 160, .25); }
+.mp-notch { align-self: center; width: 11cqw; height: 1.9cqw; border-radius: 9cqw; background: #CBC4EE; }
+.mp-gauge { width: 100%; height: auto; margin: 1cqw 0 .5cqw; }
+.mp-row { display: flex; align-items: center; gap: 2.4cqw; padding: 1.3cqw; border-radius: 9cqw; background: #F1EFF8; }
+.mp-dot { flex: none; width: 8.6cqw; height: 8.6cqw; border-radius: 50%; display: grid; place-items: center; }
+.mp-dot svg { width: 4.6cqw; height: 4.6cqw; }
+.mp-row i { flex: 1; height: 2.6cqw; margin-right: 1.6cqw; border-radius: 9cqw; background: #CDC9DD; }
+.scene-phone img.s-hedge { right: 2%; bottom: 3%; width: 52cqw; }
+.scene-phone .s-gem { left: 30%; top: 3%; width: 10cqw; height: 10cqw; transform: rotate(-12deg); filter: drop-shadow(0 1.2cqw 1.4cqw rgba(47, 111, 228, .3)); }
+.scene-phone .s-c1 { left: 2%; top: 26%; width: 8.5cqw; height: 8.5cqw; }
+.scene-phone .s-c2 { left: 52%; top: 2%; width: 9.5cqw; height: 9.5cqw; }
+.scene-phone .s-k1 { right: 4%; top: 14%; width: 6.5cqw; height: 6.5cqw; }
+.scene-phone .s-k2 { left: 3%; bottom: 18%; width: 5cqw; height: 5cqw; }
+.scene-phone .s-pop { left: 46%; top: 17%; width: 10cqw; height: 10cqw; color: #FFC21A; }
+
+/* A month on track: ticked, two bars, three category rings */
+.scene-done { aspect-ratio: 3 / 2; }
+.scene-done .s-blob { inset: 8% 10% 12% 10%; }
+.done-card { left: 7%; top: 10%; width: 58cqw; box-sizing: border-box; padding: 4.6cqw; display: flex; flex-direction: column; gap: 3.4cqw; background: #fff; border-radius: 5cqw; box-shadow: 0 3cqw 6cqw -2.5cqw rgba(74, 52, 160, .3); }
+.dc-top { display: flex; align-items: center; gap: 3.2cqw; }
+.dc-check { flex: none; width: 9.4cqw; height: 9.4cqw; border-radius: 50%; display: grid; place-items: center; background: #2FA84F; color: #fff; }
+.dc-check svg { width: 5cqw; height: 5cqw; }
+.dc-top i { width: 30cqw; height: 4.6cqw; border-radius: 9cqw; background: #2E2B5F; }
+.dc-bar { height: 3.4cqw; border-radius: 9cqw; background: #ECE9F5; overflow: hidden; }
+.dc-bar u { display: block; height: 100%; border-radius: 9cqw; }
+.dc-rings { display: flex; gap: 3.4cqw; margin-top: .6cqw; }
+.dc-rings .ring { width: 13cqw; height: 13cqw; }
+.dc-rings .ring::before { inset: 1.2cqw; }
+.dc-rings .ring::after { inset: 1.8cqw; }
+.dc-rings .ring svg { width: 5.2cqw; height: 5.2cqw; }
+.scene-done img.s-hedge { right: 0; bottom: 2%; width: 46cqw; }
+.scene-done .s-pop { left: 1%; top: 0; width: 9cqw; height: 9cqw; color: #2FCB6B; transform: rotate(-20deg); }
+.scene-done .s-k1 { left: 3%; bottom: 14%; width: 5cqw; height: 5cqw; color: #FFB020; }
+
 @media (min-width: 1081px) {
   .faq { max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px; align-items: start; }
   .faq-list { grid-column: 1; grid-row: 1; }
-  .faq-art { grid-column: 2; grid-row: 1; position: sticky; top: 110px; width: 100%; max-width: 440px; justify-self: center; }
+  .faq-art { grid-column: 2; grid-row: 1; position: sticky; top: 110px; }
 }
 @media (max-width: 1080px) {
-  .faq-art { width: 100%; max-width: 380px; margin: 0 auto 8px; }
+  .faq-art { max-width: 380px; margin: 0 auto 8px; }
 }
-.end .end-art { width: 100%; max-width: 520px; height: auto; margin: -24px 0 -4px; }
-@media (max-width: 760px) {
-  .end .end-art { margin-top: -16px; }
-}
-.legal-art { width: 100%; max-width: 340px; height: auto; margin: 0 0 8px -12px; }
+.end .end-art { max-width: 500px; margin: -20px 0 -4px; }

@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="canonical" href="https://sasankarasanjana29.github.io/hedge-site/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Pouch", "operatingSystem": "iOS", "applicationCategory": "FinanceApplication", "description": "A budgeting app for iPhone that shows what's safe to spend today, keeps every part of the month in its own category, and never asks for a bank login.", "url": "https://sasankarasanjana29.github.io/hedge-site/", "image": "https://sasankarasanjana29.github.io/hedge-site/assets/og.png", "inLanguage": ["en", "si", "ta", "hi", "bn", "es", "pt", "fr", "de", "ru", "ja", "zh", "id"], "author": {"@type": "Person", "name": "Sasanka Rasanjana"}}</script>
-<link rel="stylesheet" href="site.css?v=20261102c">
+<link rel="stylesheet" href="site.css?v=20261102e">
 </head>
 <body>
 
@@ -38,7 +38,12 @@
   <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2H4.5z" fill="currentColor"/><path d="M10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <linearGradient id="coin-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF4B8"/><stop offset=".5" stop-color="#FFD23F"/><stop offset="1" stop-color="#E39C08"/></linearGradient>
   <symbol id="coin" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.6" fill="url(#coin-g)" stroke="#B97E06" stroke-width="1.8"/><circle cx="20" cy="20" r="11.6" fill="none" stroke="#B97E06" stroke-width="1.2" opacity=".5"/><path d="M12.5 13.5a10 10 0 0 1 6-4.6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".75"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="13" y="13" width="7.5" height="7.5" rx="2" fill="currentColor"/></symbol>
+  <symbol id="i-fuel" viewBox="0 0 24 24"><rect x="4" y="3" width="10.5" height="18" rx="2.2" fill="currentColor"/><rect x="6.3" y="5.4" width="5.9" height="4.4" rx="1" fill="#fff" opacity=".9"/><path d="M14.5 9.5h1.6a1.6 1.6 0 0 1 1.6 1.6v5.4a1.6 1.6 0 0 0 3.2 0V8.6L18.4 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8.3 3.2 3.4 5.6 1.8 10.3l3.6 1.5V21h13.2v-9.2l3.6-1.5-1.6-4.7-4.9-2.4c-.6 1.7-2 2.7-3.7 2.7S8.9 4.9 8.3 3.2z" fill="currentColor"/></symbol>
+  <symbol id="gem" viewBox="0 0 40 40"><path d="M5 14 12.5 5h15L35 14 20 36z" fill="#3B8EFF"/><path d="M5 14h30L20 36z" fill="#2F6FE4"/><path d="M12.5 5 20 14l7.5-9z" fill="#9FD2FF"/><path d="M5 14l7.5-9L20 14zM20 14l7.5-9L35 14z" fill="#6FB6FF"/><path d="M13 14h14L20 36z" fill="#5AA2FF"/></symbol>
+  <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 1.5c.7 5.6 3 8 10.5 10.5C15 14.5 12.7 16.9 12 22.5c-.7-5.6-3-8-10.5-10.5C9 9.5 11.3 7.1 12 1.5z" fill="currentColor"/></symbol>
+  <symbol id="pop" viewBox="0 0 40 40"><path d="M6 26 15 29M10 13l7 7M24 6l-1 9" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/></symbol>
+  <symbol id="i-grid"viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2" fill="currentColor"/><rect x="13" y="13" width="7.5" height="7.5" rx="2" fill="currentColor"/></symbol>
 </svg>
 
 <header class="nav" id="nav">
@@ -254,7 +259,23 @@
 
   <!-- ===== FAQ ===== -->
   <section class="faq" id="faq">
-    <img class="faq-art" src="assets/hedge-phone.webp" alt="" width="920" height="696" loading="lazy">
+    <!-- Hedge beside a little phone showing today's gauge, drawn in code -->
+    <div class="faq-art scene scene-phone" aria-hidden="true">
+      <div class="s-blob"></div><div class="s-floor"></div>
+      <svg class="s-gem"><use href="#gem"/></svg>
+      <svg class="coin s-c1"><use href="#coin"/></svg>
+      <svg class="coin s-c2"><use href="#coin"/></svg>
+      <svg class="s-spark s-k1"><use href="#sparkle"/></svg>
+      <svg class="s-spark s-k2"><use href="#sparkle"/></svg>
+      <div class="mini-phone">
+        <i class="mp-notch"></i>
+        <svg class="mp-gauge" viewBox="0 0 100 56"><path d="M10 50a40 40 0 0 1 80 0" pathLength="100" stroke="#ECE9F5" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M10 50a40 40 0 0 1 80 0" pathLength="100" stroke-dasharray="62 100" stroke="#FFA51F" stroke-width="11" stroke-linecap="round" fill="none"/></svg>
+        <div class="mp-row"><span class="mp-dot" style="background:#FFD9C2;color:#7A3300"><svg><use href="#i-cart"/></svg></span><i></i></div>
+        <div class="mp-row"><span class="mp-dot" style="background:#FFE38A;color:#6B4A00"><svg><use href="#i-house"/></svg></span><i></i></div>
+      </div>
+      <svg class="s-pop"><use href="#pop"/></svg>
+      <img class="s-hedge" src="assets/hedge-thumbsUp.png" alt="" width="360" height="360" loading="lazy">
+    </div>
     <div class="faq-list">
     <h2>Questions</h2>
     <details><summary>How does Pouch work out today's number?</summary><p>It takes the money for your month, sets aside your bills and what you chose to save, and shares the rest over the days left. Every spend you log moves it.</p></details>
@@ -266,7 +287,23 @@
   </section>
 
   <section class="end">
-    <img class="end-art" src="assets/hedge-done.webp" alt="Hedge cheering beside a budget with every category ticked off" width="1120" height="664" loading="lazy">
+    <!-- Hedge cheering beside a month that's on track, drawn in code -->
+    <div class="end-art scene scene-done" aria-hidden="true">
+      <div class="s-blob"></div><div class="s-floor"></div>
+      <svg class="s-pop"><use href="#pop"/></svg>
+      <svg class="s-spark s-k1"><use href="#sparkle"/></svg>
+      <div class="done-card">
+        <div class="dc-top"><span class="dc-check"><svg><use href="#i-check"/></svg></span><i></i></div>
+        <div class="dc-bar"><u style="width:58%;background:#FF8A3D"></u></div>
+        <div class="dc-bar"><u style="width:86%;background:#2FCB6B"></u></div>
+        <div class="dc-rings">
+          <span class="ring" style="--p:.3;--c:#FF8A3D;--t:#FFE2C6"><svg style="color:#7A3300"><use href="#i-cart"/></svg></span>
+          <span class="ring" style="--p:.4;--c:#3B8EFF;--t:#DCEBFF"><svg style="color:#1F4FA8"><use href="#i-fuel"/></svg></span>
+          <span class="ring" style="--p:.55;--c:#FF5FA2;--t:#FFE0EE"><svg style="color:#8A1F4E"><use href="#i-shirt"/></svg></span>
+        </div>
+      </div>
+      <img class="s-hedge" src="assets/hedge-cheer.png" alt="" width="360" height="360" loading="lazy">
+    </div>
     <h2>Meet Hedge soon.</h2>
     <p>Pouch is coming to iPhone. Want one note when it's out?</p>
     <a class="btn primary" href="mailto:sasanka.rasanjana29@gmail.com?subject=Tell%20me%20when%20Pouch%20is%20out&amp;body=Hi%2C%20please%20let%20me%20know%20when%20Pouch%20is%20on%20the%20App%20Store.">Tell me when it's out</a>
