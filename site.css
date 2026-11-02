@@ -451,3 +451,23 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 @media (max-width: 760px) {
   .bento .tall .clip-phone { width: 230px; }
 }
+
+/* ---------- The waving Hedge looks at your cursor (site.js moves .pupil) ---------- */
+.hero-hedge img { width: 100%; height: auto; }
+.hero-hedge .eyes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* ---------- Illustrations: Hedge beside the questions, and at the end ---------- */
+.faq-art { height: auto; }
+@media (min-width: 1081px) {
+  .faq { max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px; align-items: start; }
+  .faq-list { grid-column: 1; grid-row: 1; }
+  .faq-art { grid-column: 2; grid-row: 1; position: sticky; top: 110px; width: 100%; max-width: 440px; justify-self: center; }
+}
+@media (max-width: 1080px) {
+  .faq-art { width: 100%; max-width: 380px; margin: 0 auto 8px; }
+}
+.end .end-art { width: 100%; max-width: 520px; height: auto; margin: -24px 0 -4px; }
+@media (max-width: 760px) {
+  .end .end-art { margin-top: -16px; }
+}
+.legal-art { width: 100%; max-width: 340px; height: auto; margin: 0 0 8px -12px; }

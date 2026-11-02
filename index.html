@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="canonical" href="https://sasankarasanjana29.github.io/hedge-site/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Pouch", "operatingSystem": "iOS", "applicationCategory": "FinanceApplication", "description": "A budgeting app for iPhone that shows what's safe to spend today, keeps every part of the month in its own category, and never asks for a bank login.", "url": "https://sasankarasanjana29.github.io/hedge-site/", "image": "https://sasankarasanjana29.github.io/hedge-site/assets/og.png", "inLanguage": ["en", "si", "ta", "hi", "bn", "es", "pt", "fr", "de", "ru", "ja", "zh", "id"], "author": {"@type": "Person", "name": "Sasanka Rasanjana"}}</script>
-<link rel="stylesheet" href="site.css?v=20261031a">
+<link rel="stylesheet" href="site.css?v=20261102c">
 </head>
 <body>
 
@@ -91,7 +91,16 @@
         <span class="ring" style="--p:.15;--c:#FF8A3D;--t:#FFE2C6"><svg><use href="#i-cart"/></svg></span>
         <div><b>Groceries</b><span>Rs 18,620 left</span></div>
       </div>
-      <img class="hero-hedge" src="assets/hedge-wave.png" alt="">
+      <!-- Waving Hedge with his pupils drawn live (in the picture's own 360 px units) so they follow the cursor -->
+      <div class="hero-hedge">
+        <img src="assets/hedge-wave-eyes.png" alt="" width="360" height="360">
+        <svg class="eyes" viewBox="0 0 360 360">
+          <clipPath id="eye-l"><ellipse cx="131" cy="163.4" rx="27.7" ry="30.8"/></clipPath>
+          <clipPath id="eye-r"><ellipse cx="205.6" cy="162.5" rx="28.1" ry="31.7"/></clipPath>
+          <g clip-path="url(#eye-l)"><g class="pupil" data-eye="131 163.4 9.3 12.4" data-rest="131.7 168"><circle cx="131.7" cy="168" r="17.2" fill="#1D1410"/><circle cx="125.6" cy="158.7" r="6.3" fill="#fff"/></g></g>
+          <g clip-path="url(#eye-r)"><g class="pupil" data-eye="205.6 162.5 9.7 13.3" data-rest="205.7 168"><circle cx="205.7" cy="168" r="17.2" fill="#1D1410"/><circle cx="199.7" cy="158.7" r="6.3" fill="#fff"/></g></g>
+        </svg>
+      </div>
       <img class="hedge-small" src="assets/hedge-hold.png" alt="">
     </div>
   </section>
@@ -245,16 +254,19 @@
 
   <!-- ===== FAQ ===== -->
   <section class="faq" id="faq">
+    <img class="faq-art" src="assets/hedge-phone.webp" alt="" width="920" height="696" loading="lazy">
+    <div class="faq-list">
     <h2>Questions</h2>
     <details><summary>How does Pouch work out today's number?</summary><p>It takes the money for your month, sets aside your bills and what you chose to save, and shares the rest over the days left. Every spend you log moves it.</p></details>
     <details><summary>Does it connect to my bank?</summary><p>No. You log a spend in a few taps, and that small habit is what keeps your money in mind. Pouch never asks for a bank login.</p></details>
     <details><summary>Can Pouch read my bank texts?</summary><p>No. Pouch never reads your messages. When you copy a bank text yourself and tap Paste bank text, Pouch reads only that copied text, on your iPhone, to fill in the amount and shop.</p></details>
     <details><summary>Where is my data kept?</summary><p>Only on your iPhone. There is no Pouch account and no Pouch server. A backup is saved once a week in the Files app.</p></details>
     <details><summary>When can I get it?</summary><p>Pouch is being tested now and is coming to the App Store for iPhone.</p></details>
+    </div>
   </section>
 
   <section class="end">
-    <img src="assets/hedge-cheer.png" alt="Hedge cheering" width="170" height="170" loading="lazy">
+    <img class="end-art" src="assets/hedge-done.webp" alt="Hedge cheering beside a budget with every category ticked off" width="1120" height="664" loading="lazy">
     <h2>Meet Hedge soon.</h2>
     <p>Pouch is coming to iPhone. Want one note when it's out?</p>
     <a class="btn primary" href="mailto:sasanka.rasanjana29@gmail.com?subject=Tell%20me%20when%20Pouch%20is%20out&amp;body=Hi%2C%20please%20let%20me%20know%20when%20Pouch%20is%20on%20the%20App%20Store.">Tell me when it's out</a>
@@ -267,6 +279,6 @@
   <nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="support.html">Support</a><a href="mailto:sasanka.rasanjana29@gmail.com">Contact</a></nav>
 </footer>
 
-<script src="site.js?v=20261029c" defer></script>
+<script src="site.js?v=20261102a" defer></script>
 </body>
 </html>
