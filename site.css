@@ -516,7 +516,7 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
    Copy sits on white so it reads like the rest of the page; the colour lives on a flat stage that holds the
    whole phone. Only the tabs get the app's chunky press: a face on a base of the same shape, 4pt lower. */
 .screens { margin-top: 140px; }
-.tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 36px; padding: 2px 2px 6px; }
+.tabs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 36px; padding: 2px 2px 6px; }
 .tab { display: flex; align-items: center; gap: 10px; min-width: 0; height: 58px; padding: 0 14px 0 10px; border: 0; border-radius: 18px; background: #fff; box-shadow: 0 0 0 2px var(--line), 0 4px 0 2px var(--line); color: var(--soft); font: inherit; font-weight: 800; font-size: 16px; white-space: nowrap; cursor: pointer; transition: transform .1s ease, box-shadow .1s ease, background .15s ease, color .15s ease; }
 .tab:hover { color: var(--ink); }
 .tab:active { transform: translateY(4px); box-shadow: 0 0 0 2px var(--line), 0 0 0 2px var(--line); }
@@ -543,6 +543,7 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 .st-green { background: linear-gradient(160deg, #C6F59A, #89E219 60%, #62D20A); }
 .st-gold { background: linear-gradient(160deg, #FFE88A, #FFC800 60%, #FFB300); }
 .st-pink { background: linear-gradient(160deg, #FFD6E9, #FF9AC8 60%, #FF7BB5); }
+.st-orange { background: linear-gradient(160deg, #FFD9A8, #FF9600 60%, #FF8A00); }
 /* Two white sparkles and a coin, as in the app's own moments */
 .deco { position: absolute; z-index: -1; pointer-events: none; }
 .stage .k1 { left: 40px; top: 44px; width: 38px; height: 38px; color: #fff; }
@@ -570,6 +571,12 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 .wordmark { margin: 28px 0 -5.4vw; text-align: center; white-space: nowrap; font-weight: 900; font-size: 30vw; line-height: .8; letter-spacing: -0.06em; color: transparent; background: linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .05) 85%); -webkit-background-clip: text; background-clip: text; user-select: none; }
 .footer :focus-visible { outline-color: #fff; }
 
+/* Six tabs: equal columns while they fit, then each as wide as its label, then a row that scrolls */
+@media (max-width: 1180px) { .tabs { grid-template-columns: repeat(6, auto); } }
+@media (max-width: 900px) and (min-width: 761px) {
+  .tabs { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; scrollbar-width: none; margin-left: -20px; margin-right: -20px; padding: 2px 20px 8px; }
+  .tabs::-webkit-scrollbar { display: none; }
+}
 @media (max-width: 1080px) {
   .panel { grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; }
   .stage .phone { width: 220px; }

@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="canonical" href="https://sasankarasanjana29.github.io/hedge-site/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Pouch", "operatingSystem": "iOS", "applicationCategory": "FinanceApplication", "description": "A budgeting app for iPhone that shows what's safe to spend today, keeps every part of the month in its own category, and never asks for a bank login.", "url": "https://sasankarasanjana29.github.io/hedge-site/", "image": "https://sasankarasanjana29.github.io/hedge-site/assets/og.png", "inLanguage": ["en", "si", "ta", "hi", "bn", "es", "pt", "fr", "de", "ru", "ja", "zh", "id"], "author": {"@type": "Person", "name": "Sasanka Rasanjana"}}</script>
-<link rel="stylesheet" href="site.css?v=20261102k">
+<link rel="stylesheet" href="site.css?v=20261104a">
 </head>
 <body>
 
@@ -124,7 +124,7 @@
       <!-- Tall: the habit itself, as a real recording -->
       <article class="card tall lav-deep">
         <div class="card-copy"><h3>Log a spend in seconds</h3><p>Type the amount and Hedge reacts. Today's number updates straight away.</p></div>
-        <figure class="phone clip-phone"><video class="clip" src="assets/clip-log.mp4" poster="assets/clip-log.jpg" muted loop playsinline preload="metadata" aria-label="Logging Rs 450 in Groceries: Hedge says it fits easily, and Groceries drops to Rs 18,170 left"></video></figure>
+        <figure class="phone clip-phone"><video class="clip" src="assets/clip-log.mp4" poster="assets/clip-log.jpg" muted loop playsinline preload="metadata" aria-label="Logging Rs 450 in Groceries: Hedge says it fits easily, and Groceries drops to Rs 5,560 left"></video></figure>
       </article>
 
       <article class="card wide lav">
@@ -189,17 +189,30 @@
   </section>
 
   <!-- ===== Feature explanations: the real screens, what each part does ===== -->
-  <!-- ===== The screens: chunky tabs switch one panel at a time (site.js); without JavaScript all five show ===== -->
+  <!-- ===== The screens: chunky tabs switch one panel at a time (site.js); without JavaScript all six show ===== -->
   <section class="screens" id="screens">
     <h2>Take a look inside.<br><span class="hl">Tap through the app.</span></h2>
     <div class="tabs" role="tablist" aria-label="Screens">
-      <button class="tab" role="tab" id="tab-today" aria-selected="true" aria-controls="today"><span class="tab-dot" style="background:#CE82FF"><svg><use href="#i-house"/></svg></span>Today</button>
+      <button class="tab" role="tab" id="tab-setup" aria-selected="true" aria-controls="setup"><span class="tab-dot" style="background:#FF9600"><svg><use href="#sparkle"/></svg></span>Setup</button>
+      <button class="tab" role="tab" id="tab-today" aria-selected="false" aria-controls="today" tabindex="-1"><span class="tab-dot" style="background:#CE82FF"><svg><use href="#i-house"/></svg></span>Today</button>
       <button class="tab" role="tab" id="tab-budget" aria-selected="false" aria-controls="budget" tabindex="-1"><span class="tab-dot" style="background:#49C0F8"><svg><use href="#i-chart"/></svg></span>Budget</button>
       <button class="tab" role="tab" id="tab-entries" aria-selected="false" aria-controls="entries" tabindex="-1"><span class="tab-dot" style="background:#89E219"><svg><use href="#i-list"/></svg></span>Entries</button>
       <button class="tab" role="tab" id="tab-wallets" aria-selected="false" aria-controls="wallets" tabindex="-1"><span class="tab-dot" style="background:#FFC800"><svg><use href="#i-wallet"/></svg></span>Wallets</button>
       <button class="tab" role="tab" id="tab-after-you-pay" aria-selected="false" aria-controls="after-you-pay" tabindex="-1"><span class="tab-dot" style="background:#FF9AC8"><svg><use href="#i-plus"/></svg></span>After you pay</button>
     </div>
-    <div class="panel on" id="today" role="tabpanel" aria-labelledby="tab-today">
+    <div class="panel on" id="setup" role="tabpanel" aria-labelledby="tab-setup">
+      <div class="panel-copy">
+        <h3>Setup</h3>
+        <p>Hedge says hi, then asks five quick questions, and your budget is ready. Rough numbers are fine.</p>
+        <ol class="points">
+          <li><b>Payday and pay.</b> Monthly, weekly or every few weeks, in your own currency.</li>
+          <li><b>Split your pay.</b> Hedge fills in a guess for each category, and Not planned yet counts down to All planned.</li>
+          <li><b>Just looking?</b> Tap Try sample data and look around first.</li>
+        </ol>
+      </div>
+      <div class="stage st-orange"><svg class="deco k1" aria-hidden="true"><use href="#sparkle"/></svg><svg class="deco k2" aria-hidden="true"><use href="#sparkle"/></svg><svg class="deco cn" aria-hidden="true"><use href="#coin"/></svg><figure class="phone"><video class="clip" src="assets/clip-setup.mp4" poster="assets/clip-setup.jpg" muted loop playsinline preload="metadata" aria-label="Hedge waves on the welcome screen, says hi, then asks about payday, pay and the money you have now, and splits the pay across categories"></video></figure></div>
+    </div>
+    <div class="panel" id="today" role="tabpanel" aria-labelledby="tab-today">
       <div class="panel-copy">
         <h3>Today</h3>
         <p>The first thing you see is what's safe to spend today. Underneath sits the month at a glance: what's left, what you're saving, and every category.</p>
