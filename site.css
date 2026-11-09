@@ -405,6 +405,13 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 /* The wardrobe clip framed on Hedge: the video fills a rounded window, held on the part where he is */
 .closeup { margin-top: auto; height: 172px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgba(29, 36, 51, .06); }
 .closeup video.clip { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; object-fit: cover; object-position: 50% 17%; }
+/* Hedge's trip: one full-width row under the grid; the scene's sky is plain, so crop from the top and keep their feet */
+.bento .full { grid-column: 1 / -1; }
+.trip-art { background: #EAF5DF; }
+.trip-art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 88%; }
+@media (min-width: 1081px) {
+  .bento .full .trip-art { flex: 1; align-self: stretch; height: auto; margin-top: 0; }
+}
 @media (max-width: 1080px) {
   .bento .tall .clip-phone { width: 220px; margin: 12px auto 0; }
 }
