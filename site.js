@@ -131,3 +131,41 @@ if (!still && 'IntersectionObserver' in window) {
   }, { threshold: 0.35 });
   clips.forEach((v) => watch.observe(v));
 }
+
+// The coin stack at the page's left edge: a coin drops on for each stretch you read. Hidden below 1320px (site.css).
+const stack = document.querySelector('.stack');
+if (stack) {
+  const N = 14;
+  const coins = Array.from({ length: N }, (_, i) => {
+    const c = document.createElement('i');
+    c.className = 'sc';
+    c.style.setProperty('--i', i);
+    stack.appendChild(c);
+    return c;
+  });
+  let queued = false;
+  const fill = () => {
+    queued = false;
+    const room = document.documentElement.scrollHeight - innerHeight;
+    const p = room > 0 ? Math.min(1, Math.max(0, scrollY / room)) : 0;
+    const on = 2 + Math.round(p * (N - 2));
+    coins.forEach((c, i) => c.classList.toggle('on', i < on));
+  };
+  fill();
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(fill); } }, { passive: true });
+  addEventListener('resize', fill, { passive: true });
+}
+
+// The big name in the footer pops up letter by letter the first time it comes into view.
+const mark = document.querySelector('.wordmark');
+if (mark) {
+  if (still || !('IntersectionObserver' in window)) mark.classList.add('pop');
+  else {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      mark.classList.add('pop');
+      io.disconnect();
+    }, { threshold: 0.1 });
+    io.observe(mark);
+  }
+}
