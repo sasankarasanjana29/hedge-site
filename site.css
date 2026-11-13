@@ -403,15 +403,15 @@ video.clip { display: block; width: 100%; aspect-ratio: 600 / 1304; height: auto
 }
 .bento .tall .clip-phone { margin-bottom: 0; }
 /* The wardrobe clip framed on Hedge: the video fills a rounded window, held on the part where he is */
-.closeup { margin-top: auto; height: 172px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgba(29, 36, 51, .06); }
-.closeup video.clip { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; object-fit: cover; object-position: 50% 17%; }
+.closeup { margin-top: auto; aspect-ratio: 600 / 404; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgba(29, 36, 51, .06); }
+/* The clip is cut to just the gems, Hedge and his colours, so it shows whole at any width */
+.closeup video.clip { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; object-fit: contain; }
 @media (max-width: 1080px) {
   .bento .tall .clip-phone { width: 220px; margin: 12px auto 0; }
 }
 @media (max-width: 760px) {
   .bento .tall .clip-phone { width: 190px; margin: 8px auto 0; }
   .bento .tall { padding-bottom: 26px; }
-  .closeup { height: 190px; }
 }
 @media (max-width: 760px) {
   .rows { padding: 4px 14px; }
