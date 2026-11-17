@@ -1,15 +1,7 @@
 /* Pouch site, direction A (the user's pick): a clean hero with the app composed around the phone,
    then a bento of features where every card draws the real piece of the app in its own style
    (palette.ts colours, chunky buttons, pot rings, the Dynamic Island), then the screens explained.
-   No third parties, no emoji. One typeface, Allo (Josh Puckett, SIL Open Font License, fonts/Allo-OFL.txt),
-   served from this site: the same friendly rounded face as the app. */
-
-@font-face { font-family: "Allo"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/Allo-Regular.woff2") format("woff2"); }
-@font-face { font-family: "Allo"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/Allo-Medium.woff2") format("woff2"); }
-@font-face { font-family: "Allo"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/Allo-SemiBold.woff2") format("woff2"); }
-@font-face { font-family: "Allo"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/Allo-Bold.woff2") format("woff2"); }
-@font-face { font-family: "Allo"; font-style: normal; font-weight: 800; font-display: swap; src: url("fonts/Allo-ExtraBold.woff2") format("woff2"); }
-@font-face { font-family: "Allo"; font-style: normal; font-weight: 900; font-display: swap; src: url("fonts/Allo-Black.woff2") format("woff2"); }
+   No web fonts, no third parties, no emoji. */
 
 :root {
   --page: #FFFFFF;
@@ -27,7 +19,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--page); color: var(--ink); font: 17px/1.5 "Allo", ui-rounded, "SF Pro Rounded", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 17px/1.5 ui-rounded, "SF Pro Rounded", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.03em; line-height: 1.04; }
